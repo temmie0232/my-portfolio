@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Background from "@/components/Background";
 
 // メタデータ
 export const metadata: Metadata = {
@@ -15,7 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className="antialiased">
+      <body>
+        <Background />
         {children}
       </body>
     </html>
