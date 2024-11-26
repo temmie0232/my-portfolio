@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 変数の定義 */
-
-/* ダークモード時の変数定義 */
-
-body {           /* 文字色にカラー変数を使用 */      /* 背景色にカラー変数を使用 */
-  font-family: Arial, Helvetica, sans-serif; /* フォントファミリーの設定 */
+body {      
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -71,6 +67,6 @@ body {           /* 文字色にカラー変数を使用 */      /* 背景色に
     @apply border-border;
            }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-white;
            }
 }
