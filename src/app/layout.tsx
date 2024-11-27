@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Background from "@/components/Background";
+import Background from "@/components/elements/Background";
 
 // メタデータ
 export const metadata: Metadata = {
