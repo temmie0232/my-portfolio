@@ -1,4 +1,5 @@
 "use client"
+import AboutSection from '@/components/AboutSection';
 import Navigation from '@/components/Navigation';
 import TopSection from '@/components/TopSection';
 import React from 'react';
@@ -22,6 +23,7 @@ const Portfolio = () => {
       {/* メインコンテンツ */}
       <main className="w-full">
         <TopSection />
+        <AboutSection />
       </main>
     </div>
   );
