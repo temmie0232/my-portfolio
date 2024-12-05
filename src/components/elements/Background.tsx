@@ -1,17 +1,14 @@
-'use client'; // クライアントサイドでのみ実行されることを明示
+'use client';
 import { useEffect, useRef } from 'react';
 
 export default function Background() {
     // canvasの参照を保持するためのref
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    // コンポーネントがマウントされた時に一度だけ実行
     useEffect(() => {
-        if (!canvasRef.current) {
-            return;
-        }
+        if (!canvasRef.current) return;
 
-        const canvas = canvasRef.current as HTMLCanvasElement;
+        const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
@@ -58,7 +55,7 @@ export default function Background() {
                 this.size = 1.5;
                 // 移動速度をランダムに設定
                 this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3; // 上向きの速度をより大きく
+                this.speedY = (Math.random() - 0.5) * 0.3;
                 this.isGlowing = false;
                 this.glowTimer = 0;
                 this.glowRadius = 0;
@@ -77,7 +74,7 @@ export default function Background() {
                 if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
 
-                // マウスとの距離をチェック
+                // マウスとの距離をチェックして光るエフェクトを制御
                 if (mouse.x && mouse.y) {
                     const distToMouse = getDistance(this.x, this.y, mouse.x, mouse.y);
                     const isConnectedToMouse = distToMouse < 100;
@@ -156,10 +153,25 @@ export default function Background() {
             }
         }
 
-        // パーティクルの配列を作成
-        const particles: Particle[] = [];
-        const particleCount = 200;
+        // 画面サイズに応じたパーティクル数を返す関数
+        const getParticleCount = () => {
+            return window.innerWidth < 768 ? 50 : 200; // モバイルの場合は1/4に減らす
+        };
 
+        // パーティクル配列の初期化
+        let particles: Particle[] = [];
+        let particleCount = getParticleCount();
+
+        // 画面サイズ変更時のパーティクル再生成
+        window.addEventListener('resize', () => {
+            particleCount = getParticleCount();
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        });
+
+        // 初期パーティクルの生成
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
