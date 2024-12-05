@@ -1,5 +1,6 @@
 "use client"
-import Navigation from '@/features/components/Navigation';
+import Navigation from '@/components/Navigation';
+import TopSection from '@/components/TopSection';
 import React from 'react';
 
 // セクションIDの型定義
@@ -19,8 +20,8 @@ const Portfolio = () => {
       />
 
       {/* メインコンテンツ */}
-      <main className="ml-32 w-full">
-        <h1>Main Content</h1>
+      <main className="w-full">
+        <TopSection />
       </main>
     </div>
   );
