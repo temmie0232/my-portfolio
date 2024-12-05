@@ -29,7 +29,6 @@ const SkillSection = () => {
             { icon: SiNextdotjs, name: 'Next.js' },
             { icon: FaQuestionCircle, name: 'Flet' },
             { icon: SiTailwindcss, name: 'TailwindCSS' },
-
         ],
         backend: [
             { icon: SiRubyonrails, name: 'Rails' },
@@ -75,12 +74,19 @@ const SkillSection = () => {
     ];
 
     const SkillIcon = ({ Icon, name }: { Icon: React.ElementType, name: string }) => (
-        <div className="relative group">
-            <Icon className="w-8 h-8 md:w-10 md:h-10 text-zinc-400 hover:text-white transition-colors duration-300" />
-            <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-zinc-800 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <motion.div
+            className="relative group"
+            whileHover={{ scale: 1.2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+            <Icon className="w-8 h-8 md:w-10 md:h-10 text-zinc-400 group-hover:text-white transition-colors duration-300" />
+            <motion.div
+                className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 px-3 py-1.5 bg-zinc-900/90 text-white text-xs rounded-lg whitespace-nowrap border border-orange-500/30 shadow-lg transition-opacity duration-200"
+            >
                 {name}
-            </span>
-        </div>
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900/90 rotate-45 border-r border-b border-orange-500/30" />
+            </motion.div>
+        </motion.div>
     );
 
     return (
