@@ -19,7 +19,6 @@ interface Project {
     description: string[];
 }
 
-
 const AppSection = () => {
     const router = useRouter();
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -35,7 +34,6 @@ const AppSection = () => {
             images: ["/images/home/a.png", "images/home/image19.png", "images/home/image20.png"],
             description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復スケジューリングの実装", "( Next.js + Firebase )"]
         },
-
         {
             title: "読書メモアプリ",
             images: ["images/home/image10.png", "images/home/image11.png"],
@@ -99,8 +97,8 @@ const AppSection = () => {
                                             </CarouselItem>
                                         ))}
                                     </CarouselContent>
-                                    <CarouselPrevious className="left-4" />
-                                    <CarouselNext className="right-4" />
+                                    <CarouselPrevious className="left-4 bg-orange-500/80 hover:bg-orange-600 text-white border-none w-10 h-10" />
+                                    <CarouselNext className="right-4 bg-orange-500/80 hover:bg-orange-600 text-white border-none w-10 h-10" />
                                 </Carousel>
                             </div>
                         ))}
