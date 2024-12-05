@@ -61,7 +61,7 @@ const TopSection = () => {
                             transition={{ delay: 0.2 }}
                             className="inline-block text-3xl md:text-5xl font-bold mb-2"
                         >
-                            I'm{' '}
+                            I&apos;m{' '}
                             <span className="relative inline-block">
                                 Yuta Yaginuma
                                 <motion.div

@@ -22,7 +22,7 @@ export default function Background() {
         window.addEventListener('resize', resizeCanvas);
 
         // マウス座標を追跡するためのオブジェクト
-        let mouse: { x: number | undefined; y: number | undefined } = {
+        const mouse: { x: number | undefined; y: number | undefined } = {
             x: undefined,
             y: undefined
         };

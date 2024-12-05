@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Carousel,
@@ -86,10 +87,11 @@ const AppSection = () => {
                                                             onClick={() => setSelectedImage(image)}
                                                             className="cursor-pointer aspect-video relative overflow-hidden rounded-lg"
                                                         >
-                                                            <img
+                                                            <Image
                                                                 src={image}
                                                                 alt={`${project.title} screenshot ${imageIndex + 1}`}
-                                                                className="w-full h-full object-contain bg-black"
+                                                                fill
+                                                                className="object-contain bg-black"
                                                             />
                                                         </div>
                                                     </CardContent>
