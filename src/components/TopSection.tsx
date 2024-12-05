@@ -43,13 +43,13 @@ const TopSection = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="bg-zinc-900/30 backdrop-blur-sm p-12 rounded-2xl w-full max-w-2xl mx-4"
+                className="bg-zinc-900/30 backdrop-blur-md p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4"
             >
                 <div className="text-center space-y-8">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-2xl text-zinc-400"
+                        className="text-lg text-zinc-400"
                     >
                         {greeting}
                     </motion.p>
@@ -59,15 +59,16 @@ const TopSection = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-4xl md:text-5xl font-bold mb-2"
+                            className="inline-block text-3xl md:text-5xl font-bold mb-2"
                         >
-                            I'm <span className="relative">
+                            I'm{' '}
+                            <span className="relative inline-block">
                                 Yuta Yaginuma
                                 <motion.div
                                     initial={{ scaleX: 0 }}
                                     animate={{ scaleX: 1 }}
                                     transition={{ delay: 0.5, duration: 0.8 }}
-                                    className="absolute bottom-[-3] left-0 h-0.5 bg-orange-400 w-full origin-left rounded-md"
+                                    className="absolute bottom-0 left-0 h-1 bg-orange-400 w-full origin-left"
                                 />
                             </span>
                         </motion.div>
