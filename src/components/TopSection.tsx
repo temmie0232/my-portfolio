@@ -92,7 +92,7 @@ const TopSection = () => {
             <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="absolute bottom-12"
+                className="absolute bottom-12 md:bottom-32"
             >
                 <ChevronDown size={32} className="text-white/60" />
             </motion.div>
