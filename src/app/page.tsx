@@ -1,5 +1,6 @@
 "use client"
 import AboutSection from '@/components/AboutSection';
+import AppSection from '@/components/AppSection';
 import Navigation from '@/components/Navigation';
 import SkillSection from '@/components/SkillSection';
 import TopSection from '@/components/TopSection';
@@ -25,6 +26,7 @@ const Portfolio = () => {
       <main className="w-full">
         <TopSection />
         <AboutSection />
+        <AppSection />
         <SkillSection />
       </main>
     </div>
