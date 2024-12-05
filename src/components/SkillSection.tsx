@@ -11,6 +11,7 @@ import {
     SiUbuntu, SiGit, SiGithub, SiDocker, SiNginx, SiVim, SiVercel
 } from 'react-icons/si';
 import { FaQuestionCircle } from "react-icons/fa";
+import { DiRasberryPi } from "react-icons/di";
 
 const SkillSection = () => {
     const skills = {
@@ -58,6 +59,7 @@ const SkillSection = () => {
             { icon: SiGithub, name: 'Github' },
             { icon: SiDocker, name: 'Docker' },
             { icon: SiNginx, name: 'Nginx' },
+            { icon: DiRasberryPi, name: 'RasberryPi' },
             { icon: SiVim, name: 'Vim' },
             { icon: SiVercel, name: 'Vercel' },
             { icon: Icons.SiNotion, name: 'Notion' },
