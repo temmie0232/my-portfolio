@@ -7,7 +7,7 @@ const AboutSection = () => {
     const infoItems = [
         { label: "所属", value: "日本大学 工学部 情報工学科" },
         { label: "誕生日", value: "2002/10/10" },
-        { label: "勉強中", value: "Next.js / Django / 機械学習 / 応用情報 / TOEIC" },
+        { label: "勉強中", value: "Next.js / Django / 機械学習" },
     ];
 
     return (
@@ -34,7 +34,7 @@ const AboutSection = () => {
                                     whileInView={{ scaleX: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.5, duration: 0.8 }}
-                                    className="absolute bottom-0 left-0 h-1 bg-orange-400 w-full origin-left"
+                                    className="absolute bottom-[-4] left-0 h-0.5 rounded-md bg-orange-400 w-full origin-left"
                                 />
                             </span>
                         </h2>
@@ -52,7 +52,7 @@ const AboutSection = () => {
                                 className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8"
                             >
                                 <span className="text-zinc-400 md:w-24">{item.label}</span>
-                                <span className="flex-1">{item.value}</span>
+                                <span className="flex-1 text-lg">{item.value}</span>
                             </motion.div>
                         ))}
                     </div>

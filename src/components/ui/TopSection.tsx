@@ -49,7 +49,7 @@ const TopSection = () => {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-lg text-zinc-400"
+                        className="text-2xl text-zinc-400"
                     >
                         {greeting}
                     </motion.p>
@@ -68,7 +68,7 @@ const TopSection = () => {
                                     initial={{ scaleX: 0 }}
                                     animate={{ scaleX: 1 }}
                                     transition={{ delay: 0.5, duration: 0.8 }}
-                                    className="absolute bottom-0 left-0 h-1 bg-orange-400 w-full origin-left"
+                                    className="absolute bottom-[-4] left-0 h-0.5 bg-orange-400 rounded-md w-full origin-left"
                                 />
                             </span>
                         </motion.div>
