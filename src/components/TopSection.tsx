@@ -43,7 +43,7 @@ const TopSection = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="bg-zinc-900/30 backdrop-blur-md p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4"
+                className="bg-[#202428]/60 p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4"
             >
                 <div className="text-center space-y-8">
                     <motion.p

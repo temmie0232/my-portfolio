@@ -27,17 +27,17 @@ const AppSection = () => {
     const featuredProjects: Project[] = [
         {
             title: "バイト先のシフト管理アプリ",
-            images: ["/images/home/abc.png", "images/home/image6.png", "images/home/image5.png", "images/home/image16.png",],
+            images: ["/images/home/abc.png", "/images/home/image6.png", "/images/home/image5.png", "/images/home/image16.png",],
             description: [" - シフトの提出 / 作成支援ツール", "Point: LINEのAPIを利用しグループラインと連携", "( Next.js + Django + LINE MessagingAPI + vercel )"]
         },
         {
             title: "バイト先のトレーニングアプリ",
-            images: ["/images/home/a.png", "images/home/image19.png", "images/home/image20.png"],
+            images: ["/images/home/a.png", "/images/home/image19.png", "/images/home/image20.png"],
             description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復スケジューリングの実装", "( Next.js + Firebase )"]
         },
         {
             title: "読書メモアプリ",
-            images: ["images/home/image10.png", "images/home/image11.png"],
+            images: ["/images/home/image10.png", "/images/home/image11.png"],
             description: [" - 映画 / 本 のメモツール", "( Next.js + Firebase )"]
         }
     ];
@@ -49,7 +49,7 @@ const AppSection = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="bg-zinc-900/30 backdrop-blur-md p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4"
+                    className="bg-[#202428]/60  p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
                         <span className="relative inline-block">
