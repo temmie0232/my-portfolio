@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import Background from "@/components/elements/Background";
+
+// Roboto Mono フォントの設定
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
+  // 使用するウェイト
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+});
 
 // メタデータ
 export const metadata: Metadata = {
@@ -15,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
-      <body>
+    <html lang="ja" className={robotoMono.variable}>
+      <body className={`font-mono`}>
         <Background />
         {children}
       </body>
