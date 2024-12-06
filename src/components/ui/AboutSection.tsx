@@ -34,7 +34,7 @@ const AboutSection = () => {
                                     whileInView={{ scaleX: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.5, duration: 0.8 }}
-                                    className="absolute bottom-[-4] left-0 h-0.5 rounded-md bg-orange-400 w-full origin-left"
+                                    className="absolute bottom-[-4] left-0 h-1 rounded-md bg-orange-400 w-full origin-left"
                                 />
                             </span>
                         </h2>
