@@ -1,9 +1,9 @@
 "use client"
-import AboutSection from '@/components/AboutSection';
-import AppSection from '@/components/AppSection';
-import Navigation from '@/components/Navigation';
-import SkillSection from '@/components/SkillSection';
-import TopSection from '@/components/TopSection';
+import AboutSection from '@/components/ui/AboutSection';
+import AppSection from '@/components/ui/AppSection';
+import Navigation from '@/components/layouts/Navigation';
+import SkillSection from '@/components/ui/SkillSection';
+import TopSection from '@/components/ui/TopSection';
 import React from 'react';
 
 // セクションIDの型定義
