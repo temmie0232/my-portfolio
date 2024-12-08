@@ -8,7 +8,8 @@ import {
     SiRubyonrails, SiDjango, SiFlask, SiFirebase,
     SiNumpy, SiScikitlearn, SiOpencv,
     SiMysql, SiSqlite, SiPostgresql,
-    SiUbuntu, SiGit, SiGithub, SiDocker, SiNginx, SiVim, SiVercel
+    SiUbuntu, SiGit, SiGithub, SiDocker, SiNginx, SiVim, SiVercel,
+    SiSupabase
 } from 'react-icons/si';
 import { FaQuestionCircle } from "react-icons/fa";
 import { DiRasberryPi } from "react-icons/di";
@@ -36,6 +37,7 @@ const SkillSection = () => {
             { icon: SiDjango, name: 'Django' },
             { icon: SiFlask, name: 'Flask' },
             { icon: SiFirebase, name: 'Firebase' },
+            { icon: SiSupabase, name: 'Supabase' },
         ],
         libraries: [
             { icon: SiNumpy, name: 'Numpy' },
@@ -52,6 +54,7 @@ const SkillSection = () => {
             { icon: SiMysql, name: 'MySQL' },
             { icon: SiSqlite, name: 'SQLite' },
             { icon: SiPostgresql, name: 'PostgreSQL' },
+            { icon: Icons.SiPrisma, name: 'Prisma' },
         ],
         others: [
             { icon: SiUbuntu, name: 'Ubuntu' },
