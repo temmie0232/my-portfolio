@@ -1,61 +1,85 @@
-'use client'
+"use client"
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
-import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import ProjectCard from '@/components/ui/ProjectCard';
 
-const shakingAnimation = {
-    animate: {
-        x: [0, -2, 2, -2, 2, 0],
-        transition: {
-            duration: 0.5,
-            repeat: Infinity,
-            repeatType: "reverse" as const,
-            ease: "linear"
-        }
-    }
-};
-
-export default function Apps() {
+export default function ProjectsPage() {
     const router = useRouter();
 
+    const projects = [
+        {
+            title: "バイト先のシフト管理アプリ",
+            description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
+            purpose: "シフト管理の効率化と、従業員・管理者間のコミュニケーションの円滑化を図るため。",
+            tools: ["Next.js", "Django", "LINE MessagingAPI", "Vercel"],
+            projectUrl: "/apps/shift-management"
+        },
+        {
+            title: "バイト先のトレーニングアプリ",
+            description: "新人従業員向けの調理方法学習支援アプリ。間隔反復学習方式を採用し、効率的な学習を実現。",
+            purpose: "新人トレーニングの効率化と、学習進捗の可視化による動機付けの向上。",
+            tools: ["Next.js", "Firebase", "TailwindCSS"],
+            projectUrl: "/apps/training"
+        },
+        {
+            title: "読書メモアプリ",
+            description: "本や映画の感想、気づきを記録・整理するためのメモアプリケーション。タグ付けと検索機能で効率的な管理が可能。",
+            purpose: "読書や視聴による学びを体系的に整理し、後から振り返りやすくするため。",
+            tools: ["Next.js", "Firebase", "TailwindCSS"],
+            projectUrl: "/apps/book-notes"
+        }
+    ];
+
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center relative">
+        <div className="min-h-screen w-full p-8 md:p-12">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="absolute top-8 left-8"
+                className="fixed top-8 left-8 z-10"
             >
                 <Button
                     onClick={() => router.push('/')}
                     variant="ghost"
-                    className="text-zinc-400 hover:text-white"
+                    className="text-zinc-400 hover:text-white border border-zinc-700 hover:border-zinc-600"
                 >
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back
                 </Button>
             </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center space-y-4"
-            >
+            <div className="max-w-7xl mx-auto pt-20">
                 <motion.h1
-                    className="text-4xl font-bold"
-                    variants={shakingAnimation}
-                    animate="animate"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-4xl md:text-5xl font-bold text-center mb-12"
                 >
-                    Coming Soon
+                    <span className="relative inline-block">
+                        Projects
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                            className="absolute bottom-[-4px] left-0 h-1 rounded-md bg-orange-400 w-full origin-left"
+                        />
+                    </span>
                 </motion.h1>
-                <motion.p
-                    className="text-zinc-400"
-                    variants={shakingAnimation}
-                    animate="animate"
-                >
-                    このページは現在作成中です！
-                </motion.p>
-            </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                        >
+                            <ProjectCard {...project} />
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
