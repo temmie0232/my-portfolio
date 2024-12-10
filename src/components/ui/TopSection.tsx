@@ -43,7 +43,7 @@ const TopSection = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="bg-[#202428]/60 p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4"
+                className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4"
             >
                 <div className="text-center space-y-8">
                     <motion.p
@@ -94,7 +94,7 @@ const TopSection = () => {
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className="absolute bottom-12 md:bottom-32"
             >
-                <ChevronDown size={32} className="text-white/60" />
+                <ChevronDown size={32} className="text-white/90" />
             </motion.div>
         </section>
     );
