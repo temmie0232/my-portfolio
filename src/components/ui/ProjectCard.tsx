@@ -4,15 +4,35 @@ import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
+const shakingAnimation = {
+    animate: {
+        x: [0, -1, 1, -1, 1, 0],
+        transition: {
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "reverse" as const,
+            ease: "linear"
+        }
+    }
+};
+
 interface ProjectCardProps {
     title: string;
     description: string;
     purpose: string;
     tools: string[];
     projectUrl: string;
+    isFeatured?: boolean;
 }
 
-export default function ProjectCard({ title, description, purpose, tools, projectUrl }: ProjectCardProps) {
+export default function ProjectCard({
+    title,
+    description,
+    purpose,
+    tools,
+    projectUrl,
+    isFeatured = false
+}: ProjectCardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -20,11 +40,36 @@ export default function ProjectCard({ title, description, purpose, tools, projec
             viewport={{ once: true }}
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="h-full"
+            className="h-full relative group"
         >
-            <Card className="bg-[#202428]/100 border-zinc-700 hover:border-orange-500/50 transition-colors duration-300 h-full flex flex-col">
+            {/* 虹色の光るボーダー - 2重にして内側は暗く、外側だけ光るように */}
+            {isFeatured && (
+                <>
+                    <div className="absolute -inset-[3px] rounded-xl bg-[#202428] z-0" />
+                    <div className="absolute -inset-[4px] rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 via-purple-500 via-blue-500 to-green-400 opacity-75 blur-sm animate-gradient-rotate -z-10" />
+                </>
+            )}
+
+            {/* 注目バッジ */}
+            {isFeatured && (
+                <motion.div
+                    className="absolute -top-3 -right-3 z-10"
+                    variants={shakingAnimation}
+                    animate="animate"
+                >
+                    <div className="relative transform rotate-12">
+                        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg blur-sm animate-pulse" />
+                        <div className="relative bg-orange-500 text-white text-lg px-4 py-1 rounded-lg font-bold border-2 border-white/20">
+                            注目！！
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+
+            {/* カード本体 */}
+            <Card className="bg-[#202428] border-zinc-700 hover:border-orange-500/50 transition-colors duration-300 h-full flex flex-col relative z-0">
                 <CardHeader>
-                    <CardTitle className="text-xl md:text-2xl font-bold text-white">
+                    <CardTitle className="text-xl md:text-2xl font-bold text-gray-300">
                         <span className="relative inline-block">
                             {title}
                             <motion.div
@@ -32,7 +77,7 @@ export default function ProjectCard({ title, description, purpose, tools, projec
                                 whileInView={{ scaleX: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2, duration: 0.8 }}
-                                className="absolute bottom-[-4px] left-0 h-1 rounded-md bg-orange-400 w-full origin-left"
+                                className="absolute bottom-[-4px] left-0 h-0.5 rounded-md bg-orange-400 w-full origin-left"
                             />
                         </span>
                     </CardTitle>

@@ -15,7 +15,8 @@ export default function ProjectsPage() {
             description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
             purpose: "シフト管理の効率化と、従業員・管理者間のコミュニケーションの円滑化を図るため。",
             tools: ["Next.js", "Django", "LINE MessagingAPI", "Vercel"],
-            projectUrl: "/apps/shift-management"
+            projectUrl: "/apps/shift-management",
+            isFeatured: true
         },
         {
             title: "バイト先のトレーニングアプリ",
@@ -35,6 +36,24 @@ export default function ProjectsPage() {
 
     return (
         <div className="min-h-screen w-full p-8 md:p-12">
+            <style jsx global>{`
+        @keyframes gradient-rotate {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        .animate-gradient-rotate {
+          animation: gradient-rotate 3s linear infinite;
+          background-size: 200% 200%;
+        }
+      `}</style>
+
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
