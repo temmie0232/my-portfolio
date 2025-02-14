@@ -16,7 +16,8 @@ import { X } from 'lucide-react';
 
 interface Project {
     title: string;
-    images: string[];
+    images?: string[];
+    videos?: string[];
     description: string[];
 }
 
@@ -27,7 +28,7 @@ const AppSection = () => {
     const featuredProjects: Project[] = [
         {
             title: "バイト先のシフト管理アプリ",
-            images: ["/images/home/abc.png", "/images/home/image6.png", "/images/home/image5.png", "/images/home/image16.png",],
+            images: ["/images/home/abc.png", "/images/home/image6.png", "/images/home/image5.png", "/images/home/image16.png"],
             description: [" - シフトの提出 / 作成支援ツール", "Point: LINEのAPIを利用しグループラインと連携", "( Next.js + Django + LINE MessagingAPI + vercel )"]
         },
         {
@@ -36,9 +37,9 @@ const AppSection = () => {
             description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復スケジューリングの実装", "( Next.js + Firebase )"]
         },
         {
-            title: "読書メモアプリ",
-            images: ["/images/home/image10.png", "/images/home/image11.png"],
-            description: [" - 映画 / 本 のメモツール", "( Next.js + Firebase )"]
+            title: "英文解析ツール",
+            videos: ["Jvy3Ki11_Ss"],
+            description: [" - web上の英文テキストの文法を解説", "( JavaScript + HTML + CSS + OpenAI API + Chrome Extensions API )"]
         }
     ];
 
@@ -49,7 +50,7 @@ const AppSection = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="bg-[#202428]/90  p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4 border border-white/10"
+                    className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
                         <span className="relative inline-block">
@@ -79,25 +80,45 @@ const AppSection = () => {
                                 </div>
                                 <Carousel className="w-full">
                                     <CarouselContent>
-                                        {project.images.map((image, imageIndex) => (
-                                            <CarouselItem key={imageIndex}>
-                                                <Card className="bg-zinc-800/50 border-none">
-                                                    <CardContent className="p-6">
-                                                        <div
-                                                            onClick={() => setSelectedImage(image)}
-                                                            className="cursor-pointer aspect-video relative overflow-hidden rounded-lg"
-                                                        >
-                                                            <Image
-                                                                src={image}
-                                                                alt={`${project.title} screenshot ${imageIndex + 1}`}
-                                                                fill
-                                                                className="object-contain bg-black"
-                                                            />
-                                                        </div>
-                                                    </CardContent>
-                                                </Card>
-                                            </CarouselItem>
-                                        ))}
+                                        {project.videos ? (
+                                            project.videos.map((videoId, videoIndex) => (
+                                                <CarouselItem key={videoIndex}>
+                                                    <Card className="bg-zinc-800/50 border-none">
+                                                        <CardContent className="p-6">
+                                                            <div className="aspect-video relative overflow-hidden rounded-lg">
+                                                                <iframe
+                                                                    src={`https://www.youtube.com/embed/${videoId}`}
+                                                                    title={`${project.title} video ${videoIndex + 1}`}
+                                                                    className="w-full h-full absolute inset-0"
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                    allowFullScreen
+                                                                />
+                                                            </div>
+                                                        </CardContent>
+                                                    </Card>
+                                                </CarouselItem>
+                                            ))
+                                        ) : (
+                                            project.images?.map((image, imageIndex) => (
+                                                <CarouselItem key={imageIndex}>
+                                                    <Card className="bg-zinc-800/50 border-none">
+                                                        <CardContent className="p-6">
+                                                            <div
+                                                                onClick={() => setSelectedImage(image)}
+                                                                className="cursor-pointer aspect-video relative overflow-hidden rounded-lg"
+                                                            >
+                                                                <Image
+                                                                    src={image}
+                                                                    alt={`${project.title} screenshot ${imageIndex + 1}`}
+                                                                    fill
+                                                                    className="object-contain bg-black"
+                                                                />
+                                                            </div>
+                                                        </CardContent>
+                                                    </Card>
+                                                </CarouselItem>
+                                            ))
+                                        )}
                                     </CarouselContent>
                                     <CarouselPrevious className="left-4 bg-orange-500/80 hover:bg-orange-600 text-white border-none w-10 h-10" />
                                     <CarouselNext className="right-4 bg-orange-500/80 hover:bg-orange-600 text-white border-none w-10 h-10" />
