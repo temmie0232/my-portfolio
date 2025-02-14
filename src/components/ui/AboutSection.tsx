@@ -16,7 +16,7 @@ const AboutSection = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4"
+                className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-2xl mx-4 border border-white/10"
             >
                 <div className="space-y-12">
                     {/* 名前 */}
