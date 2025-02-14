@@ -50,7 +50,7 @@ const AppSection = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4"
+                    className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4 border border-white/10"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
                         <span className="relative inline-block">
