@@ -16,19 +16,27 @@ export default function ProjectsPage() {
             description: "web上の英文を選択するとOpenAIのAPIを使用し、文法を詳細に解説してくれる Google Chrome の拡張機能",
             purpose: "web上で英語をただ翻訳するツールは便利だが、ただ日本語に翻訳されるだけでは文法の理解がなかなか深まらない。そこで解説してくれるツールを作成した。",
             tools: ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "OpenAI API"],
-            projectUrl: "/apps/soon",
+            projectUrl: "/apps/english-assistant",
             isFeatured: true
         },
-        // "/apps/english-analysis"
+        // "/apps/english-assistant"
         {
             title: "音楽共有プレイヤー",
             description: "ホストのSpotifyアカウントを複数人の端末から操作",
             purpose: "車内など、複数人で音楽を共有する際の課題を解決するWebアプリ。従来のBluetooth接続では1台のデバイスしか接続できず、曲の選択や操作が制限されるという問題を解決。",
             tools: ["Next.js", "MongoDB", "Spotify WEB API"],
-            projectUrl: "/apps/soon",
+            projectUrl: "/apps/spotify-share",
             isFeatured: true
         },
         // "/apps/book-notes"
+        {
+            title: "ポートフォリオサイト",
+            description: "私についてのポートフォリオサイト",
+            purpose: "自分についてのサイトを作成してみたかった。フロントエンドの理解を深める。",
+            tools: ["Next.js",],
+            projectUrl: "/apps/portfolio",
+            isFeatured: true
+        },
         {
             title: "バイト先のシフト管理アプリ",
             description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
@@ -46,14 +54,7 @@ export default function ProjectsPage() {
             projectUrl: "/apps/soon",
             isFeatured: true
         },
-        {
-            title: "ポートフォリオサイト",
-            description: "私についてのポートフォリオサイト",
-            purpose: "自分についてのサイトを作成してみたかった。フロントエンドの理解を深める。",
-            tools: ["Next.js",],
-            projectUrl: "/apps/soon",
-        },
-        // "/apps/training"
+
         {
             title: "読書メモアプリ",
             description: "本や映画の感想、気づきを記録・整理するためのメモアプリケーション。タグ付けと検索機能で効率的な管理が可能。",
