@@ -21,6 +21,15 @@ export default function ProjectsPage() {
         },
         // "/apps/english-analysis"
         {
+            title: "音楽共有プレイヤー",
+            description: "ホストのSpotifyアカウントを複数人の端末から操作",
+            purpose: "車内など、複数人で音楽を共有する際の課題を解決するWebアプリ。従来のBluetooth接続では1台のデバイスしか接続できず、曲の選択や操作が制限されるという問題を解決。",
+            tools: ["Next.js", "MongoDB", "Spotify WEB API"],
+            projectUrl: "/apps/soon",
+            isFeatured: true
+        },
+        // "/apps/book-notes"
+        {
             title: "バイト先のシフト管理アプリ",
             description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
             purpose: "シフト管理の効率化",
@@ -49,7 +58,7 @@ export default function ProjectsPage() {
             title: "読書メモアプリ",
             description: "本や映画の感想、気づきを記録・整理するためのメモアプリケーション。タグ付けと検索機能で効率的な管理が可能。",
             purpose: "本や映画の内容を体系的に整理し、後から振り返りやすくするため。BaaSを使用した開発方法の理解を深めるため。",
-            tools: ["React", "Firebase", "Firestore", "TailwindCSS"],
+            tools: ["React", "Firebase", "Firestore"],
             projectUrl: "/apps/soon"
         },
         // "/apps/book-notes"
