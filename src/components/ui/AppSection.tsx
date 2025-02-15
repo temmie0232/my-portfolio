@@ -37,6 +37,11 @@ const AppSection = () => {
             description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復スケジューリングの実装", "( Next.js + Firebase )"]
         },
         {
+            title: "音楽共同コントローラー",
+            videos: ["GSP6QGZpyq4"],
+            description: [" - 一つのSpotifyアカウントを複数人で操作できるツール", "( Next.js + MongoDB + Spotify Web API )"]
+        },
+        {
             title: "英文解析ツール",
             videos: ["Jvy3Ki11_Ss"],
             description: [" - web上の英文テキストの文法を解説", "( JavaScript + HTML + CSS + OpenAI API + Chrome Extensions API )"]

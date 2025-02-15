@@ -29,6 +29,7 @@ const SkillSection = () => {
         frontend: [
             { icon: SiReact, name: 'React' },
             { icon: SiNextdotjs, name: 'Next.js' },
+            { icon: Icons.SiVuedotjs, name: 'Vue.js' },
             { icon: FaQuestionCircle, name: 'Flet' },
             { icon: SiTailwindcss, name: 'TailwindCSS' },
         ],
@@ -55,6 +56,7 @@ const SkillSection = () => {
             { icon: SiSqlite, name: 'SQLite' },
             { icon: SiPostgresql, name: 'PostgreSQL' },
             { icon: Icons.SiPrisma, name: 'Prisma' },
+            { icon: Icons.SiMongodb, name: 'MongoDB' }
         ],
         others: [
             { icon: SiUbuntu, name: 'Ubuntu' },
