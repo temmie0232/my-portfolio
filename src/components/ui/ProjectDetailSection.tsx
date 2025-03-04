@@ -38,6 +38,12 @@ interface ProjectDetail {
     architecture?: {
         structure?: string;
         dataFlow?: string[];
+        algorithmDetails?: {
+            title: string;
+            description: string;
+            points: string[];
+            results: string[];
+        };
     };
     deployment?: string[];
     futureScope?: string[];
@@ -45,6 +51,7 @@ interface ProjectDetail {
         github?: string;
         demo?: string;
     };
+    note?: string;
 }
 
 const TechStackSection = ({ items }: { items: TechStackItem[] }) => (
@@ -220,7 +227,7 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                             <CardContent className="p-6">
                                 <h2 className="text-2xl font-semibold mb-4 text-white">アーキテクチャ</h2>
                                 {project.architecture.structure && (
-                                    <div className="mb-4">
+                                    <div className="mb-6">
                                         <h3 className="text-lg font-semibold text-zinc-200 mb-2">ディレクトリ構造</h3>
                                         <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
                                             <code className="text-sm text-zinc-300">{project.architecture.structure}</code>
@@ -228,7 +235,7 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                                     </div>
                                 )}
                                 {project.architecture.dataFlow && (
-                                    <div>
+                                    <div className="mb-6">
                                         <h3 className="text-lg font-semibold text-zinc-200 mb-2">データフロー</h3>
                                         <ul className="space-y-2">
                                             {project.architecture.dataFlow.map((step, index) => (
@@ -237,6 +244,40 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                                                 </li>
                                             ))}
                                         </ul>
+                                    </div>
+                                )}
+                                
+                                {/* Algorithm Details Section */}
+                                {project.architecture.algorithmDetails && (
+                                    <div className="mt-8 p-6 bg-zinc-800/30 rounded-lg border border-zinc-700">
+                                        <h3 className="text-xl font-semibold text-zinc-100 mb-4">
+                                            {project.architecture.algorithmDetails.title}
+                                        </h3>
+                                        <p className="text-zinc-400 mb-4">
+                                            {project.architecture.algorithmDetails.description}
+                                        </p>
+                                        
+                                        <div className="mt-4">
+                                            <h4 className="text-lg font-medium text-zinc-200 mb-2">仕組み</h4>
+                                            <ul className="space-y-2 mb-6">
+                                                {project.architecture.algorithmDetails.points.map((point, idx) => (
+                                                    <li key={idx} className="text-zinc-400">
+                                                        • {point}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        
+                                        <div className="mt-4">
+                                            <h4 className="text-lg font-medium text-zinc-200 mb-2">導入効果</h4>
+                                            <ul className="space-y-2">
+                                                {project.architecture.algorithmDetails.results.map((result, idx) => (
+                                                    <li key={idx} className="text-zinc-400">
+                                                        • {result}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
                                 )}
                             </CardContent>
@@ -260,28 +301,37 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                     )}
 
                     {/* Links Section */}
-                    {project.links && (
-                        <div className="flex justify-center gap-4">
-                            {project.links.github && (
-                                <Button
-                                    onClick={() => window.open(project.links?.github, '_blank')}
-                                    className="bg-zinc-800 hover:bg-zinc-700"
-                                >
-                                    <Github className="mr-2 h-4 w-4" />
-                                    ソースコードを見る
-                                </Button>
-                            )}
-                            {/*project.links.demo && (
-                                <Button
-                                    onClick={() => window.open(project.links?.demo, '_blank')}
-                                    className="bg-orange-500 hover:bg-orange-600"
-                                >
-                                    <ExternalLink className="mr-2 h-4 w-4" />
-                                    Live Demo
-                                </Button>
-                            )*/}
-                        </div>
-                    )}
+                    <div className="flex flex-col items-center gap-4">
+                        {project.links && Object.keys(project.links).length > 0 && (
+                            <div className="flex justify-center gap-4">
+                                {project.links.github && (
+                                    <Button
+                                        onClick={() => window.open(project.links?.github, '_blank')}
+                                        className="bg-zinc-800 hover:bg-zinc-700"
+                                    >
+                                        <Github className="mr-2 h-4 w-4" />
+                                        ソースコードを見る
+                                    </Button>
+                                )}
+                                {project.links.demo && (
+                                    <Button
+                                        onClick={() => window.open(project.links?.demo, '_blank')}
+                                        className="bg-orange-500 hover:bg-orange-600"
+                                    >
+                                        <ExternalLink className="mr-2 h-4 w-4" />
+                                        Live Demo
+                                    </Button>
+                                )}
+                            </div>
+                        )}
+                        
+                        {/* Note Section */}
+                        {project.note && (
+                            <p className="text-zinc-400 mt-4 text-center italic">
+                                {project.note}
+                            </p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
