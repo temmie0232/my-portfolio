@@ -51,7 +51,7 @@ export default function ProjectsPage() {
             description: "新人従業員向けの調理方法学習支援アプリ。間隔反復学習のアルゴリズムを採用し、最適な学習プランを生成。",
             purpose: "新人トレーニングの効率化と、学習進捗の可視化による動機付けの向上。",
             tools: ["Vue.js", "Ruby on Rails", "PostgleSQL",],
-            projectUrl: "/apps/soon",
+            projectUrl: "/apps/cafe-training",
             isFeatured: true
         },
 
