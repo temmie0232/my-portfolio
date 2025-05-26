@@ -42,7 +42,7 @@ interface ProjectDetail {
             title: string;
             description: string;
             points: string[];
-            results: string[];
+            results?: string[];
         };
     };
     deployment?: string[];
@@ -246,7 +246,7 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                                         </ul>
                                     </div>
                                 )}
-                                
+
                                 {/* Algorithm Details Section */}
                                 {project.architecture.algorithmDetails && (
                                     <div className="mt-8 p-6 bg-zinc-800/30 rounded-lg border border-zinc-700">
@@ -256,7 +256,7 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                                         <p className="text-zinc-400 mb-4">
                                             {project.architecture.algorithmDetails.description}
                                         </p>
-                                        
+
                                         <div className="mt-4">
                                             <h4 className="text-lg font-medium text-zinc-200 mb-2">仕組み</h4>
                                             <ul className="space-y-2 mb-6">
@@ -267,17 +267,19 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                                                 ))}
                                             </ul>
                                         </div>
-                                        
-                                        <div className="mt-4">
-                                            <h4 className="text-lg font-medium text-zinc-200 mb-2">導入効果</h4>
-                                            <ul className="space-y-2">
-                                                {project.architecture.algorithmDetails.results.map((result, idx) => (
-                                                    <li key={idx} className="text-zinc-400">
-                                                        • {result}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+
+                                        {project.architecture.algorithmDetails.results && (
+                                            <div className="mt-4">
+                                                <h4 className="text-lg font-medium text-zinc-200 mb-2">導入効果</h4>
+                                                <ul className="space-y-2">
+                                                    {project.architecture.algorithmDetails.results.map((result, idx) => (
+                                                        <li key={idx} className="text-zinc-400">
+                                                            • {result}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </CardContent>
@@ -324,7 +326,7 @@ const ProjectDetailSection: React.FC<{ project: ProjectDetail }> = ({ project })
                                 )}
                             </div>
                         )}
-                        
+
                         {/* Note Section */}
                         {project.note && (
                             <p className="text-zinc-400 mt-4 text-center italic">
