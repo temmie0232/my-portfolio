@@ -179,6 +179,7 @@ export default function ProjectCard({
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.2 }}
                             >
+                                (hover)
                             </motion.div>
                         </Button>
                     )}
@@ -239,7 +240,7 @@ export default function ProjectCard({
                                             src={previewImage}
                                             alt={title}
                                             fill
-                                            className="object-cover"
+                                            className="object-contain bg-black"
                                         />
                                     </div>
                                 ) : null}
