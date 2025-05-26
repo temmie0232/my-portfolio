@@ -17,45 +17,45 @@ export default function ProjectsPage() {
             purpose: "web上で英語をただ翻訳するツールは便利だが、ただ日本語に翻訳されるだけでは文法の理解がなかなか深まらない。そこで解説してくれるツールを作成した。",
             tools: ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "OpenAI API"],
             projectUrl: "/apps/english-assistant",
-            isFeatured: true
+            isFeatured: true,
+            previewVideo: "Jvy3Ki11_Ss"
         },
-        // "/apps/english-assistant"
         {
             title: "音楽共有プレイヤー",
             description: "ホストのSpotifyアカウントを複数人の端末から操作",
             purpose: "車内など、複数人で音楽を共有する際の課題を解決するWebアプリ。従来のBluetooth接続では1台のデバイスしか接続できず、曲の選択や操作が制限されるという問題を解決。",
             tools: ["Next.js", "MongoDB", "Spotify WEB API"],
             projectUrl: "/apps/spotify-share",
-            isFeatured: true
+            isFeatured: true,
+            previewVideo: "GSP6QGZpyq4"
         },
-        // "/apps/book-notes"
         {
             title: "リアルタイム物体検知アプリ",
             description: "カメラを使用してリアルタイムで画角内の物体を検知するwebアプリ。モバイル向けのため精度は低め。",
             purpose: "TensorFlow.jsを使って、ブラウザ上で機械学習モデルを動かす実験、モバイルデバイスのカメラAPIと機械学習の統合についての技術検証",
             tools: ["Next.js", "TensorFlow.js", "COCO-SSDモデル"],
             projectUrl: "/apps/object-detection",
-            isFeatured: true
+            isFeatured: true,
+            previewImage: "/images/object-detection/image1.jpg"
         },
-
         {
             title: "バイト先のシフト管理アプリ",
             description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
             purpose: "シフト管理の効率化",
             tools: ["Next.js", "Django", "LINE MessagingAPI", "Vercel", "MySQL"],
             projectUrl: "/apps/soon",
-            isFeatured: true
+            isFeatured: true,
+            previewImage: "/images/home/abc.png"
         },
-        // "/apps/shift-management"
         {
             title: "バイト先のトレーニングアプリ",
             description: "新人従業員向けの調理方法学習支援アプリ。間隔反復学習のアルゴリズムを採用し、最適な学習プランを生成。",
             purpose: "新人トレーニングの効率化と、学習進捗の可視化による動機付けの向上。",
             tools: ["Vue.js", "Ruby on Rails", "PostgleSQL",],
             projectUrl: "/apps/cafe-training",
-            isFeatured: true
+            isFeatured: true,
+            previewImage: "/images/home/a.png"
         },
-        // "/apps/object-detection"
         {
             title: "ポートフォリオサイト",
             description: "私についてのポートフォリオサイト",
@@ -71,8 +71,6 @@ export default function ProjectsPage() {
             tools: ["React", "Firebase", "Firestore"],
             projectUrl: "/apps/soon"
         },
-        // "/apps/book-notes"
-
         {
             title: "掲示板型のSNS",
             description: "本や映画の感想、気づきを記録・整理するためのメモアプリケーション。タグ付けと検索機能で効率的な管理が可能。",
@@ -80,15 +78,13 @@ export default function ProjectsPage() {
             tools: ["Flet", "flask", "SQLite"],
             projectUrl: "/apps/soon"
         },
-        // "/apps/first-webapp"
         {
             title: "その他",
             description: "ほぼチュートリアル",
             purpose: "開発手法を学ぶ",
             tools: ["Youtube", "GitHub"],
             projectUrl: "/apps/other"
-        },
-        // "/apps/other"
+        }
     ];
 
     return (
@@ -151,7 +147,11 @@ export default function ProjectsPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <ProjectCard {...project} />
+                            <ProjectCard
+                                {...project}
+                                previewImage={project.previewImage}
+                                previewVideo={project.previewVideo}
+                            />
                         </motion.div>
                     ))}
                 </div>
