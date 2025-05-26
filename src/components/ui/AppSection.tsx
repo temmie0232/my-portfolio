@@ -34,7 +34,12 @@ const AppSection = () => {
         {
             title: "バイト先のトレーニングアプリ",
             images: ["/images/home/a.png", "/images/home/image19.png", "/images/home/image20.png"],
-            description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復スケジューリングの実装", "( Next.js + Firebase )"]
+            description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復学習アルゴリズムの実装", "( Next.js + Firebase )"]
+        },
+        {
+            title: "リアルタイム物体検知アプリ",
+            images: ["/images/object-detection/image1.jpg"],
+            description: [" - ブラウザ上でリアルタイム物体検知を行うモバイルアプリ", "Point: TensorFlow.js + COCO-SSDモデルによる80種類のオブジェクト検知", "( Next.js + TensorFlow.js + COCO-SSD + Canvas API )"]
         },
         {
             title: "音楽共有プレイヤー",
@@ -44,7 +49,7 @@ const AppSection = () => {
         {
             title: "英文解析ツール",
             videos: ["Jvy3Ki11_Ss"],
-            description: [" - web上の英文テキストの文法を解説", "( JavaScript + HTML + CSS + OpenAI API + Chrome Extensions API )"]
+            description: [" - web上の選択した英文テキストの文法をAIがリアルタイムで解説", "( JavaScript + HTML + CSS + OpenAI API + Chrome Extensions API )"]
         }
     ];
 

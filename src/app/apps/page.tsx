@@ -30,13 +30,14 @@ export default function ProjectsPage() {
         },
         // "/apps/book-notes"
         {
-            title: "ポートフォリオサイト",
-            description: "私についてのポートフォリオサイト",
-            purpose: "自分についてのサイトを作成してみたかった。フロントエンドの理解を深める。",
-            tools: ["Next.js",],
-            projectUrl: "/apps/portfolio",
+            title: "リアルタイム物体検知アプリ",
+            description: "カメラを使用してリアルタイムで画角内の物体を検知するwebアプリ。モバイル向けのため精度は低め。",
+            purpose: "TensorFlow.jsを使って、ブラウザ上で機械学習モデルを動かす実験、モバイルデバイスのカメラAPIと機械学習の統合についての技術検証",
+            tools: ["Next.js", "TensorFlow.js", "COCO-SSDモデル"],
+            projectUrl: "/apps/object-detection",
             isFeatured: true
         },
+
         {
             title: "バイト先のシフト管理アプリ",
             description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
@@ -54,7 +55,15 @@ export default function ProjectsPage() {
             projectUrl: "/apps/cafe-training",
             isFeatured: true
         },
-
+        // "/apps/object-detection"
+        {
+            title: "ポートフォリオサイト",
+            description: "私についてのポートフォリオサイト",
+            purpose: "自分についてのサイトを作成してみたかった。フロントエンドの理解を深める。",
+            tools: ["Next.js",],
+            projectUrl: "/apps/portfolio",
+            isFeatured: true
+        },
         {
             title: "読書メモアプリ",
             description: "本や映画の感想、気づきを記録・整理するためのメモアプリケーション。タグ付けと検索機能で効率的な管理が可能。",
@@ -63,14 +72,7 @@ export default function ProjectsPage() {
             projectUrl: "/apps/soon"
         },
         // "/apps/book-notes"
-        {
-            title: "リアルタイム物体検知アプリ",
-            description: "カメラを使用してリアルタイムで画角内の物体を検知するwebアプリ。モバイル向けのため精度は低め。",
-            purpose: "TensorFlow.jsを使って、ブラウザ上で機械学習モデルを動かす実験、モバイルデバイスのカメラAPIと機械学習の統合についての技術検証",
-            tools: ["Next.js", "TensorFlow.js", "COCO-SSDモデル"],
-            projectUrl: "/apps/soon"
-        },
-        // "/apps/object-detection"
+
         {
             title: "掲示板型のSNS",
             description: "本や映画の感想、気づきを記録・整理するためのメモアプリケーション。タグ付けと検索機能で効率的な管理が可能。",
