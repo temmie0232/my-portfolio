@@ -104,7 +104,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
 
             {isSidebarOpen && (
                 <div
-                    className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 md:hidden"
+                    className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
                     onClick={() => setIsSidebarOpen(false)}
                 />
             )}
@@ -113,9 +113,10 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
                 fixed md:left-16 top-0 md:top-1/2 md:-translate-y-1/2 
                 flex flex-col items-start space-y-8 
                 md:p-0 p-8 pt-20
-                bg-zinc-800/20 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none
+                bg-zinc-800/90 backdrop-blur-md md:bg-transparent md:backdrop-blur-none
                 h-full md:h-auto w-64 md:w-auto
                 transform transition-all duration-300 ease-out will-change-transform
+                z-50
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
             `}>
                 {sections.map((section) => (
