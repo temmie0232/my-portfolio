@@ -13,9 +13,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
     const sections: SectionId[] = ['top', 'about', 'app', 'skills'];
-    const animationFrameRef = useRef<number>();
-    const targetScrollProgressRef = useRef(0);
-    const currentScrollProgressRef = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -23,26 +20,17 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
             const documentHeight = document.documentElement.scrollHeight;
             const scrollTop = window.scrollY;
             const maxScroll = documentHeight - windowHeight;
-            targetScrollProgressRef.current = (scrollTop / maxScroll) * 100;
+            const progress = (scrollTop / maxScroll) * 100;
+            setScrollProgress(progress);
         };
 
-        const animate = () => {
-            const ease = 0.075;
-            const diff = targetScrollProgressRef.current - currentScrollProgressRef.current;
-            currentScrollProgressRef.current += diff * ease;
-
-            setScrollProgress(currentScrollProgressRef.current);
-            animationFrameRef.current = requestAnimationFrame(animate);
-        };
+        // 初期値を設定
+        handleScroll();
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        animationFrameRef.current = requestAnimationFrame(animate);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            if (animationFrameRef.current) {
-                cancelAnimationFrame(animationFrameRef.current);
-            }
         };
     }, []);
 
@@ -71,11 +59,10 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, onSectionChange 
                 {/* メインのスクロールバー */}
                 <div className="w-1 h-full mx-2 bg-zinc-700/30 rounded-full overflow-hidden relative">
                     <div
-                        className="absolute w-full bg-gradient-to-b from-orange-400 to-orange-600 rounded-full will-change-[height,opacity] transition-all duration-300 ease-out"
+                        className="absolute w-full bg-gradient-to-b from-orange-400 to-orange-600 rounded-full transition-none"
                         style={{
                             height: `${scrollProgress}%`,
                             boxShadow: '0 0 20px rgba(251, 146, 60, 0.3)',
-                            transform: 'translate3d(0, 0, 0)',
                         }}
                     >
                         {/* スクロールインジケーターの光る部分 */}
