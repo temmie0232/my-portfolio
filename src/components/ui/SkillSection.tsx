@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'react-icons/si';
 import {
@@ -15,6 +15,8 @@ import { FaQuestionCircle } from "react-icons/fa";
 import { DiRasberryPi } from "react-icons/di";
 
 const SkillSection = () => {
+    const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+
     const skills = {
         languages: [
             { icon: SiC, name: 'C' },
@@ -80,29 +82,13 @@ const SkillSection = () => {
         { title: "Others", items: skills.others },
     ];
 
-    const SkillIcon = ({ Icon, name }: { Icon: React.ElementType, name: string }) => (
-        <motion.div
-            className="relative group"
-            whileHover={{ scale: 1.2 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        >
-            <Icon className="w-8 h-8 md:w-10 md:h-10 text-zinc-400 group-hover:text-white transition-colors duration-300" />
-            <motion.div
-                className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 px-3 py-1.5 bg-zinc-900/90 text-white text-xs rounded-lg whitespace-nowrap border border-orange-500/30 shadow-lg transition-opacity duration-200"
-            >
-                {name}
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900/90 rotate-45 border-r border-b border-orange-500/30" />
-            </motion.div>
-        </motion.div>
-    );
-
     return (
         <section id="skills" className="min-h-screen w-full flex items-center justify-center py-20">
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4  border border-white/10"
+                className="bg-[#202428]/90 p-8 md:p-12 rounded-2xl w-full max-w-4xl mx-4 border border-white/10"
             >
                 <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
                     <span className="relative inline-block">
@@ -112,7 +98,7 @@ const SkillSection = () => {
                             whileInView={{ scaleX: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.5, duration: 0.8 }}
-                            className="absolute bottom-[-4] left-0 h-1 rounded-md bg-orange-400 w-full origin-left"
+                            className="absolute bottom-[-4px] left-0 h-1 rounded-md bg-orange-400 w-full origin-left"
                         />
                     </span>
                 </h2>
@@ -126,21 +112,65 @@ const SkillSection = () => {
                             viewport={{ once: true }}
                             transition={{ delay: categoryIndex * 0.1 }}
                         >
-                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-zinc-200">
+                            <h3 className="text-xl md:text-2xl font-semibold mb-6 text-zinc-200">
                                 {category.title}
                             </h3>
-                            <div className="grid grid-cols-4 md:grid-cols-8 gap-8">
-                                {category.items.map((item, index) => (
-                                    <motion.div
-                                        key={item.name}
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        <SkillIcon Icon={item.icon} name={item.name} />
-                                    </motion.div>
-                                ))}
+                            <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-6">
+                                {category.items.map((item, index) => {
+                                    const Icon = item.icon;
+                                    const isHovered = hoveredSkill === `${category.title}-${item.name}`;
+
+                                    return (
+                                        <motion.div
+                                            key={item.name}
+                                            initial={{ scale: 0 }}
+                                            whileInView={{ scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                delay: index * 0.05,
+                                                type: "spring",
+                                                stiffness: 260,
+                                                damping: 20
+                                            }}
+                                            className="relative flex items-center justify-center"
+                                        >
+                                            <motion.div
+                                                className="relative cursor-pointer p-2"
+                                                onMouseEnter={() => setHoveredSkill(`${category.title}-${item.name}`)}
+                                                onMouseLeave={() => setHoveredSkill(null)}
+                                                animate={{
+                                                    scale: isHovered ? 1.2 : 1,
+                                                }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 400,
+                                                    damping: 10
+                                                }}
+                                            >
+                                                <Icon
+                                                    className={`w-8 h-8 md:w-10 md:h-10 transition-colors duration-200 ${isHovered ? 'text-white' : 'text-zinc-400'
+                                                        }`}
+                                                />
+
+                                                {/* ツールチップ */}
+                                                <motion.div
+                                                    className="absolute -top-10 left-1/2 -translate-x-1/2 pointer-events-none"
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{
+                                                        opacity: isHovered ? 1 : 0,
+                                                        y: isHovered ? 0 : 10
+                                                    }}
+                                                    transition={{ duration: 0.2 }}
+                                                >
+                                                    <div className="px-3 py-1.5 bg-zinc-900 text-white text-xs rounded-lg whitespace-nowrap border border-orange-500/30 shadow-lg">
+                                                        {item.name}
+                                                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900 rotate-45 border-r border-b border-orange-500/30" />
+                                                    </div>
+                                                </motion.div>
+                                            </motion.div>
+                                        </motion.div>
+                                    );
+                                })}
                             </div>
                         </motion.div>
                     ))}
