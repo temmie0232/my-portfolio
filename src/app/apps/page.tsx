@@ -18,7 +18,7 @@ export default function ProjectsPage() {
             tools: ["Python", "BERT", "Streamlit", "Plotly", "HuggingFace", "Kaggle API", "scikit-learn", "pandas"],
             projectUrl: "/apps/amazon-review-analyzer",
             isFeatured: true,
-            previewImage: "/images/amazon-review/preview1.png"
+            previewImage: "/images/amazon-review-analyzer/preview3.png"
         },
         {
             title: "バイト先のシフト管理アプリ",
