@@ -33,6 +33,7 @@ const SkillSection = () => {
             { icon: SiNextdotjs, name: 'Next.js' },
             { icon: Icons.SiVuedotjs, name: 'Vue.js' },
             { icon: FaQuestionCircle, name: 'Flet' },
+            { icon: Icons.SiStreamlit, name: 'Streamlit' },
             { icon: SiTailwindcss, name: 'TailwindCSS' },
         ],
         backend: [
@@ -46,9 +47,12 @@ const SkillSection = () => {
             { icon: SiNumpy, name: 'Numpy' },
             { icon: Icons.SiPandas, name: 'Pandas' },
             { icon: FaQuestionCircle, name: 'Matplotlib' },
+            { icon: Icons.SiPlotly, name: 'Plotly' },
+            { icon: FaQuestionCircle, name: 'Seaborn' },
             { icon: SiScikitlearn, name: 'Scikit-learn' },
             { icon: SiOpencv, name: 'OpenCV' },
             { icon: Icons.SiSelenium, name: 'Selenium' },
+            { icon: FaQuestionCircle, name: 'HuggingFace' },
             { icon: Icons.SiRadixui, name: 'RadixUI' },
             { icon: Icons.SiShadcnui, name: 'Shadcn/ui' },
             { icon: SiMui, name: 'MaterialUI' }
@@ -70,6 +74,7 @@ const SkillSection = () => {
             { icon: SiVim, name: 'Vim' },
             { icon: SiVercel, name: 'Vercel' },
             { icon: Icons.SiNotion, name: 'Notion' },
+            { icon: FaQuestionCircle, name: 'Kaggle API' },
         ],
     };
 

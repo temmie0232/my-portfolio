@@ -27,6 +27,11 @@ const AppSection = () => {
 
     const featuredProjects: Project[] = [
         {
+            title: "Amazon レビュー分析システム",
+            images: ["/images/amazon-review/preview1.png"],
+            description: [" - AIを活用したビジネス改善提案の自動生成システム", "Point: 568,454件の実データから83.7%精度で感情分析・改善案提案", "( Python + BERT + Streamlit + Kaggle API + HuggingFace )"]
+        },
+        {
             title: "バイト先のシフト管理アプリ",
             images: ["/images/home/abc.png", "/images/home/image6.png", "/images/home/image5.png", "/images/home/image16.png"],
             description: [" - シフトの提出 / 作成支援ツール", "Point: LINEのAPIを利用しグループラインと連携", "( Next.js + Django + LINE MessagingAPI + vercel )"]
@@ -40,11 +45,6 @@ const AppSection = () => {
             title: "リアルタイム物体検知アプリ",
             images: ["/images/object-detection/image1.jpg"],
             description: [" - ブラウザ上でリアルタイム物体検知を行うモバイルアプリ", "Point: TensorFlow.js + COCO-SSDモデルによる80種類のオブジェクト検知", "( Next.js + TensorFlow.js + COCO-SSD + Canvas API )"]
-        },
-        {
-            title: "音楽共有プレイヤー",
-            videos: ["GSP6QGZpyq4"],
-            description: [" - 一つのSpotifyアカウントを複数人で操作できるツール", "( Next.js + MongoDB + Spotify Web API )"]
         },
         {
             title: "英文解析ツール",

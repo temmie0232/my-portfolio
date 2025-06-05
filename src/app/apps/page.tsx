@@ -12,31 +12,13 @@ export default function ProjectsPage() {
 
     const projects = [
         {
-            title: "英文解析ツール",
-            description: "web上の英文を選択するとOpenAIのAPIを使用し、文法を詳細に解説してくれる Google Chrome の拡張機能",
-            purpose: "web上で英語をただ翻訳するツールは便利だが、ただ日本語に翻訳されるだけでは文法の理解がなかなか深まらない。そこで解説してくれるツールを作成した。",
-            tools: ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "OpenAI API"],
-            projectUrl: "/apps/english-assistant",
+            title: "Amazon レビュー分析システム",
+            description: "AIを活用したビジネス改善提案の自動生成システム。568,454件の実Amazonレビューデータから83.7%精度で感情分析を行い、具体的な改善提案とROI算出を提供。",
+            purpose: "企業がレビューデータから客観的な改善点を特定し、投資対効果を考慮した戦略的意思決定を支援するため。データサイエンス・機械学習・ビジネス分析のスキル習得。",
+            tools: ["Python", "BERT", "Streamlit", "Plotly", "HuggingFace", "Kaggle API", "scikit-learn", "pandas"],
+            projectUrl: "/apps/amazon-review-analyzer",
             isFeatured: true,
-            previewVideo: "Jvy3Ki11_Ss"
-        },
-        {
-            title: "音楽共有プレイヤー",
-            description: "ホストのSpotifyアカウントを複数人の端末から操作",
-            purpose: "車内など、複数人で音楽を共有する際の課題を解決するWebアプリ。従来のBluetooth接続では1台のデバイスしか接続できず、曲の選択や操作が制限されるという問題を解決。",
-            tools: ["Next.js", "MongoDB", "Spotify WEB API"],
-            projectUrl: "/apps/spotify-share",
-            isFeatured: true,
-            previewVideo: "GSP6QGZpyq4"
-        },
-        {
-            title: "リアルタイム物体検知アプリ",
-            description: "カメラを使用してリアルタイムで画角内の物体を検知するwebアプリ。モバイル向けのため精度は低め。",
-            purpose: "TensorFlow.jsを使って、ブラウザ上で機械学習モデルを動かす実験、モバイルデバイスのカメラAPIと機械学習の統合についての技術検証",
-            tools: ["Next.js", "TensorFlow.js", "COCO-SSDモデル"],
-            projectUrl: "/apps/object-detection",
-            isFeatured: true,
-            previewImage: "/images/object-detection/image1.jpg"
+            previewImage: "/images/amazon-review/preview1.png"
         },
         {
             title: "バイト先のシフト管理アプリ",
@@ -57,12 +39,40 @@ export default function ProjectsPage() {
             previewImage: "/images/home/a.png"
         },
         {
+            title: "英文解析ツール",
+            description: "web上の英文を選択するとOpenAIのAPIを使用し、文法を詳細に解説してくれる Google Chrome の拡張機能",
+            purpose: "web上で英語をただ翻訳するツールは便利だが、ただ日本語に翻訳されるだけでは文法の理解がなかなか深まらない。そこで解説してくれるツールを作成した。",
+            tools: ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "OpenAI API"],
+            projectUrl: "/apps/english-assistant",
+            isFeatured: false,
+            previewVideo: "Jvy3Ki11_Ss"
+        },
+        {
+            title: "音楽共有プレイヤー",
+            description: "ホストのSpotifyアカウントを複数人の端末から操作",
+            purpose: "車内など、複数人で音楽を共有する際の課題を解決するWebアプリ。従来のBluetooth接続では1台のデバイスしか接続できず、曲の選択や操作が制限されるという問題を解決。",
+            tools: ["Next.js", "MongoDB", "Spotify WEB API"],
+            projectUrl: "/apps/spotify-share",
+            isFeatured: false,
+            previewVideo: "GSP6QGZpyq4"
+        },
+        {
+            title: "リアルタイム物体検知アプリ",
+            description: "カメラを使用してリアルタイムで画角内の物体を検知するwebアプリ。モバイル向けのため精度は低め。",
+            purpose: "TensorFlow.jsを使って、ブラウザ上で機械学習モデルを動かす実験、モバイルデバイスのカメラAPIと機械学習の統合についての技術検証",
+            tools: ["Next.js", "TensorFlow.js", "COCO-SSDモデル"],
+            projectUrl: "/apps/object-detection",
+            isFeatured: false,
+            previewImage: "/images/object-detection/image1.jpg"
+        },
+
+        {
             title: "ポートフォリオサイト",
             description: "私についてのポートフォリオサイト",
             purpose: "自分についてのサイトを作成してみたかった。フロントエンドの理解を深める。",
             tools: ["Next.js",],
             projectUrl: "/apps/portfolio",
-            isFeatured: true
+            isFeatured: false
         },
         {
             title: "読書メモアプリ",
