@@ -29,12 +29,12 @@ const AppSection = () => {
         {
             title: "Amazon レビュー分析システム",
             images: [
-                "/images/amazon-review-analyzer/preview1.png",
-                "/images/amazon-review-analyzer/preview2.png",
-                "/images/amazon-review-analyzer/preview3.png",
-                "/images/amazon-review-analyzer/preview4.png",
-                "/images/amazon-review-analyzer/preview5.png",
-                "/images/amazon-review-analyzer/preview6.png"
+                "/images/amazon-review-analyzer/1.png",
+                "/images/amazon-review-analyzer/2.png",
+                "/images/amazon-review-analyzer/3.png",
+                "/images/amazon-review-analyzer/4.png",
+                "/images/amazon-review-analyzer/5.png",
+                "/images/amazon-review-analyzer/6.png"
             ],
             description: [" - AIを活用したビジネス改善提案の自動生成システム", "Point: 568,454件の実データから83.7%精度で感情分析・改善案提案", "( Python + BERT + Streamlit + Kaggle API + HuggingFace )"]
         },
@@ -66,7 +66,7 @@ const AppSection = () => {
         },
         {
             title: "リアルタイム物体検知アプリ",
-            images: ["/images/object-detection/image1.jpg"],
+            images: ["/images/object-detection/1.jpg"],
             description: [" - ブラウザ上でリアルタイム物体検知を行うモバイルアプリ", "Point: TensorFlow.js + COCO-SSDモデルによる80種類のオブジェクト検知", "( Next.js + TensorFlow.js + COCO-SSD + Canvas API )"]
         },
         {
