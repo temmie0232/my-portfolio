@@ -12,33 +12,27 @@ const AmazonReviewAnalyzerPage = () => {
         media: [
             {
                 type: 'image' as const,
-                url: '/images/amazon-review-analyzer/preview1.png',
-                alt: 'Streamlit Webアプリのホーム画面'
+                url: '/images/amazon-review-analyzer/1.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/amazon-review-analyzer/preview2.png',
-                alt: '感情分析結果の可視化'
+                url: '/images/amazon-review-analyzer/2.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/amazon-review-analyzer/preview3.png',
-                alt: 'ROI分析と改善提案画面'
+                url: '/images/amazon-review-analyzer/3.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/amazon-review-analyzer/preview4.png',
-                alt: 'データアップロード機能画面'
+                url: '/images/amazon-review-analyzer/4.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/amazon-review-analyzer/preview5.png',
-                alt: '詳細レポート出力画面'
+                url: '/images/amazon-review-analyzer/5.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/amazon-review-analyzer/preview6.png',
-                alt: 'キーワード抽出と問題分類結果'
+                url: '/images/amazon-review-analyzer/6.png',
             }
         ],
         features: [

@@ -11,19 +11,32 @@ const CafeTrainingPage = () => {
         media: [
             {
                 type: 'image' as const,
-                url: '/images/cafe-training/preview1.png',
-                alt: 'トレーニングアプリのホーム画面'
+                url: '/images/trainingapp/1.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/cafe-training/preview2.png',
-                alt: '商品マニュアル画面'
+                url: '/images/trainingapp/2.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/cafe-training/preview3.png',
-                alt: 'クイズ機能の画面'
-            }
+                url: '/images/trainingapp/3.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/trainingapp/4.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/trainingapp/5.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/trainingapp/6.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/trainingapp/7.png',
+            },
         ],
         features: [
             {

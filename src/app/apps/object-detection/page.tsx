@@ -12,7 +12,7 @@ const ObjectDetectionPage = () => {
         media: [
             {
                 type: 'image' as const,
-                url: '/images/object-detection/image1.jpg',
+                url: '/images/object-detection/1.jpg',
                 alt: 'アプリのメイン画面'
             },
         ],

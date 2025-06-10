@@ -12,24 +12,32 @@ const ShiftManagerPage = () => {
         media: [
             {
                 type: 'image' as const,
-                url: '/images/shift-manager/overview.png',
-                alt: 'シフト管理アプリの概要画面'
+                url: '/images/shift-manager/1.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-manager/employee-form.png',
-                alt: '従業員用シフト入力フォーム'
+                url: '/images/shift-manager/2.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-manager/admin-dashboard.png',
-                alt: '管理者用ダッシュボード'
+                url: '/images/shift-manager/3.png',
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-manager/line-integration.png',
-                alt: 'LINE連携機能'
-            }
+                url: '/images/shift-manager/4.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/shift-manager/5.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/shift-manager/6.png',
+            },
+            {
+                type: 'image' as const,
+                url: '/images/shift-manager/7.png',
+            },
         ],
         features: [
             {
