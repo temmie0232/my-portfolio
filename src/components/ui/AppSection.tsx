@@ -40,12 +40,28 @@ const AppSection = () => {
         },
         {
             title: "バイト先のシフト管理アプリ",
-            images: ["/images/home/abc.png", "/images/home/image6.png", "/images/home/image5.png", "/images/home/image16.png"],
+            images: [
+                "/images/shiftmanager/1.png",
+                "/images/shiftmanager/2.png",
+                "/images/shiftmanager/3.png",
+                "/images/shiftmanager/4.png",
+                "/images/shiftmanager/5.png",
+                "/images/shiftmanager/6.png",
+                "/images/shiftmanager/7.png",
+            ],
             description: [" - シフトの提出 / 作成支援ツール", "Point: LINEのAPIを利用しグループラインと連携", "( Next.js + Django + LINE MessagingAPI + vercel )"]
         },
         {
             title: "バイト先のトレーニングアプリ",
-            images: ["/images/home/a.png", "/images/home/image19.png", "/images/home/image20.png"],
+            images: [
+                "/images/trainingapp/1.png",
+                "/images/trainingapp/2.png",
+                "/images/trainingapp/3.png",
+                "/images/trainingapp/4.png",
+                "/images/trainingapp/5.png",
+                "/images/trainingapp/6.png",
+                "/images/trainingapp/7.png",
+            ],
             description: [" - ドリンク / フード 調理方法の学習支援ツール", "Point: 間隔反復学習アルゴリズムの実装", "( Next.js + Firebase )"]
         },
         {
