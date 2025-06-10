@@ -22,10 +22,10 @@ export default function ProjectsPage() {
         },
         {
             title: "バイト先のシフト管理アプリ",
-            description: "従業員のシフト提出と管理者のシフト作成を支援するWebアプリケーション。LINEとの連携により、通知の送信や確認が可能。",
-            purpose: "シフト管理の効率化",
-            tools: ["Next.js", "Django", "LINE MessagingAPI", "Vercel", "MySQL"],
-            projectUrl: "/apps/soon",
+            description: "従来のアナログなシフト管理（A4手書き→写真→LINE送信）を完全デジタル化。LINE API連携により自動的なシフト提出URLの送信と、PDF→PNG変換による自動配信を実現。",
+            purpose: "手書きの見づらさ、店舗への移動の必要性、写真撮影時のトラブルといった従来のシフト管理の問題を解決し、効率化を図るため。",
+            tools: ["Next.js", "Django", "LINE Messaging API", "Vercel", "MySQL"],
+            projectUrl: "/apps/shift-manager",
             isFeatured: true,
             previewImage: "/images/home/abc.png"
         },
