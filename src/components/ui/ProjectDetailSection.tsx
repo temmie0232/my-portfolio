@@ -15,7 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from 'next/navigation';
 
 // 新しいプロジェクト詳細の型定義
-interface NewProjectDetail {
+interface ProjectDetail {
     // タイトル・概要
     title: string;
     shortDescription: string; // ひとことで内容がわかる紹介文
@@ -65,11 +65,11 @@ interface NewProjectDetail {
     };
 }
 
-interface NewProjectDetailSectionProps {
-    project: NewProjectDetail;
+interface ProjectDetailSectionProps {
+    project: ProjectDetail;
 }
 
-const NewProjectDetailSection: React.FC<NewProjectDetailSectionProps> = ({ project }) => {
+const ProjectDetailSection: React.FC<ProjectDetailSectionProps> = ({ project }) => {
     const router = useRouter();
 
     return (
@@ -392,4 +392,4 @@ const NewProjectDetailSection: React.FC<NewProjectDetailSectionProps> = ({ proje
     );
 };
 
-export default NewProjectDetailSection;
+export default ProjectDetailSection;
