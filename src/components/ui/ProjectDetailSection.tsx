@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation';
 interface ProjectDetail {
     // タイトル・概要
     title: string;
-    shortDescription: string; // 紹介文
+    shortDescription: string; // ひとことで内容がわかる紹介文
     screenshots?: {
         type: 'image' | 'youtube';
         url: string;
@@ -26,8 +26,8 @@ interface ProjectDetail {
 
     // 開発背景・目的
     development: {
-        background: string; // 課題やニーズ
-        target: string;     // どんなユーザー・用途を想定しているか
+        background: string; // 課題
+        target: string;     // 目的
     };
 
     // 主な機能
@@ -72,333 +72,387 @@ const ProjectDetailSection: React.FC<ProjectDetailSectionProps> = ({ project }) 
     const router = useRouter();
 
     return (
-        <div className="min-h-screen w-full text-white">
-            {/* ヘッダー部分 */}
-            <div className="p-8 md:p-12">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="mb-8"
+        <div className="min-h-screen w-full p-8 md:p-12">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="fixed top-8 left-8 z-10"
+            >
+                <Button
+                    onClick={() => router.back()}
+                    variant="ghost"
+                    className="text-zinc-400 hover:text-white border border-zinc-700 hover:border-zinc-600"
                 >
-                    <Button
-                        onClick={() => router.back()}
-                        variant="ghost"
-                        className="text-zinc-400 hover:text-white border border-zinc-700 hover:border-zinc-600"
-                    >
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        戻る
-                    </Button>
-                </motion.div>
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    戻る
+                </Button>
+            </motion.div>
 
-                <div className="max-w-4xl mx-auto space-y-12">
+            <div className="max-w-4xl mx-auto pt-20">
+                {/* タイトルセクション */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-4xl md:text-5xl font-bold text-center mb-12"
+                >
+                    <span className="relative inline-block">
+                        {project.title}
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                            className="absolute bottom-[-4px] left-0 h-1 rounded-md bg-orange-400 w-full origin-left"
+                        />
+                    </span>
+                </motion.h1>
+
+                <div className="space-y-12">
                     {/* タイトル・概要セクション */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="space-y-6"
-                    >
-                        {/* アプリ名と紹介文 */}
-                        <div>
-                            <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
-                            <p className="text-xl text-zinc-400 leading-relaxed">{project.shortDescription}</p>
-                        </div>
+                    <Card className="bg-[#202428]/90 border-zinc-700">
+                        <CardContent className="p-6 space-y-6">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                            >
+                                <h2 className="text-2xl font-semibold mb-4 text-white">プロジェクト概要</h2>
+                                <div className="space-y-4">
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">アプリ概要</h3>
+                                        <p className="text-zinc-400">{project.shortDescription}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
 
-                        {/* アプリの画面キャプチャ */}
-                        {project.screenshots && project.screenshots.length > 0 && (
-                            <div className="mt-8">
-                                <Carousel className="w-full max-w-3xl mx-auto">
-                                    <CarouselContent>
-                                        {project.screenshots.map((media, index) => (
-                                            <CarouselItem key={index}>
-                                                <Card className="bg-zinc-800 border-zinc-700">
-                                                    <CardContent className="flex aspect-video items-center justify-center p-2">
-                                                        {media.type === 'image' ? (
-                                                            <Image
-                                                                src={media.url}
-                                                                alt={media.alt || `${project.title} screenshot ${index + 1}`}
-                                                                width={800}
-                                                                height={450}
-                                                                className="rounded-lg object-cover w-full h-full"
-                                                            />
-                                                        ) : (
-                                                            <div className="w-full h-full bg-zinc-700 rounded-lg flex items-center justify-center">
-                                                                <p className="text-zinc-300">YouTube Video: {media.url}</p>
+                            {/* アプリの画面キャプチャ */}
+                            {project.screenshots && project.screenshots.length > 0 && (
+                                <div className="mt-8">
+                                    <Carousel className="w-full">
+                                        <CarouselContent>
+                                            {project.screenshots.map((item, index) => (
+                                                <CarouselItem key={index}>
+                                                    <Card className="bg-zinc-800/50 border-none">
+                                                        <CardContent className="p-6">
+                                                            <div className="aspect-video relative overflow-hidden rounded-lg">
+                                                                {item.type === 'youtube' ? (
+                                                                    <iframe
+                                                                        src={`https://www.youtube.com/embed/${item.url}`}
+                                                                        title={`Preview ${index + 1}`}
+                                                                        className="w-full h-full absolute inset-0"
+                                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                        allowFullScreen
+                                                                    />
+                                                                ) : (
+                                                                    <Image
+                                                                        src={item.url}
+                                                                        alt={item.alt || `Preview ${index + 1}`}
+                                                                        fill
+                                                                        className="object-contain bg-black"
+                                                                    />
+                                                                )}
                                                             </div>
-                                                        )}
-                                                    </CardContent>
-                                                </Card>
-                                            </CarouselItem>
-                                        ))}
-                                    </CarouselContent>
-                                    <CarouselPrevious className="bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700" />
-                                    <CarouselNext className="bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700" />
-                                </Carousel>
-                            </div>
-                        )}
-                    </motion.section>
+                                                        </CardContent>
+                                                    </Card>
+                                                </CarouselItem>
+                                            ))}
+                                        </CarouselContent>
+                                        <CarouselPrevious className="left-4 bg-orange-500/80 hover:bg-orange-600 text-white border-none" />
+                                        <CarouselNext className="right-4 bg-orange-500/80 hover:bg-orange-600 text-white border-none" />
+                                    </Carousel>
+                                </div>
+                            )}
+                        </CardContent>
+                    </Card>
 
                     {/* 開発背景・目的セクション */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="space-y-6"
-                    >
-                        <h2 className="text-2xl font-bold text-orange-500">開発背景・目的</h2>
-                        <div className="space-y-6 bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
-                            {/* 課題やニーズをどう捉えたか */}
-                            <div>
-                                <h3 className="text-lg font-semibold mb-3 text-zinc-300">課題・ニーズ</h3>
-                                <p className="text-zinc-400 leading-relaxed">{project.development.background}</p>
-                            </div>
-                            {/* どんなユーザー・用途を想定しているか */}
-                            <div>
-                                <h3 className="text-lg font-semibold mb-3 text-zinc-300">想定ユーザー・用途</h3>
-                                <p className="text-zinc-400 leading-relaxed">{project.development.target}</p>
-                            </div>
-                        </div>
-                    </motion.section>
+                    <Card className="bg-[#202428]/90 border-zinc-700">
+                        <CardContent className="p-6 space-y-6">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                            >
+                                <h2 className="text-2xl font-semibold mb-4 text-white">開発背景・目的</h2>
+                                <div className="space-y-4">
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">課題</h3>
+                                        <p className="text-zinc-400">{project.development.background}</p>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">目的</h3>
+                                        <p className="text-zinc-400">{project.development.target}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </CardContent>
+                    </Card>
 
                     {/* 主な機能セクション */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="space-y-6"
-                    >
-                        <h2 className="text-2xl font-bold text-orange-500">主な機能</h2>
-                        {/* 実装した代表的な機能 */}
-                        <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
-                            <div className="space-y-3">
-                                {project.features.map((feature, index) => (
-                                    <div key={index} className="flex items-start space-x-3">
-                                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                                        <p className="text-zinc-400 leading-relaxed">{feature}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.section>
+                    <Card className="bg-[#202428]/90 border-zinc-700">
+                        <CardContent className="p-6">
+                            <h2 className="text-2xl font-semibold mb-4 text-white">主な機能</h2>
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                            >
+                                <ul className="space-y-2">
+                                    {project.features.map((feature, index) => (
+                                        <li key={index} className="text-zinc-400">
+                                            • {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        </CardContent>
+                    </Card>
 
                     {/* 使用技術・開発環境セクション */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="space-y-6"
-                    >
-                        <h2 className="text-2xl font-bold text-orange-500">使用技術・開発環境</h2>
-                        {/* フロント・バックエンド・インフラを分けて表示 */}
-                        <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <Card className="bg-[#202428]/90 border-zinc-700">
+                        <CardContent className="p-6">
+                            <h2 className="text-2xl font-semibold mb-4 text-white">使用技術・開発環境</h2>
+                            <div className="space-y-6">
                                 {project.techStack.frontend && project.techStack.frontend.length > 0 && (
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-3 text-zinc-300">フロントエンド</h3>
-                                        <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">フロントエンド</h3>
+                                        <div className="flex flex-wrap gap-2">
                                             {project.techStack.frontend.map((tech, index) => (
-                                                <div key={index} className="flex items-center space-x-2">
-                                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                                    <span className="text-zinc-400">{tech}</span>
-                                                </div>
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700 rounded-full text-sm text-zinc-300"
+                                                >
+                                                    {tech}
+                                                </span>
                                             ))}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                                 {project.techStack.backend && project.techStack.backend.length > 0 && (
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-3 text-zinc-300">バックエンド</h3>
-                                        <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">バックエンド</h3>
+                                        <div className="flex flex-wrap gap-2">
                                             {project.techStack.backend.map((tech, index) => (
-                                                <div key={index} className="flex items-center space-x-2">
-                                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                                    <span className="text-zinc-400">{tech}</span>
-                                                </div>
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700 rounded-full text-sm text-zinc-300"
+                                                >
+                                                    {tech}
+                                                </span>
                                             ))}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                                 {project.techStack.database && project.techStack.database.length > 0 && (
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-3 text-zinc-300">データベース</h3>
-                                        <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">データベース</h3>
+                                        <div className="flex flex-wrap gap-2">
                                             {project.techStack.database.map((tech, index) => (
-                                                <div key={index} className="flex items-center space-x-2">
-                                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                                    <span className="text-zinc-400">{tech}</span>
-                                                </div>
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700 rounded-full text-sm text-zinc-300"
+                                                >
+                                                    {tech}
+                                                </span>
                                             ))}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                                 {project.techStack.infrastructure && project.techStack.infrastructure.length > 0 && (
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-3 text-zinc-300">インフラ</h3>
-                                        <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">インフラ</h3>
+                                        <div className="flex flex-wrap gap-2">
                                             {project.techStack.infrastructure.map((tech, index) => (
-                                                <div key={index} className="flex items-center space-x-2">
-                                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                                    <span className="text-zinc-400">{tech}</span>
-                                                </div>
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700 rounded-full text-sm text-zinc-300"
+                                                >
+                                                    {tech}
+                                                </span>
                                             ))}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                                 {project.techStack.auth && project.techStack.auth.length > 0 && (
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-3 text-zinc-300">認証</h3>
-                                        <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">認証</h3>
+                                        <div className="flex flex-wrap gap-2">
                                             {project.techStack.auth.map((tech, index) => (
-                                                <div key={index} className="flex items-center space-x-2">
-                                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                                    <span className="text-zinc-400">{tech}</span>
-                                                </div>
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700 rounded-full text-sm text-zinc-300"
+                                                >
+                                                    {tech}
+                                                </span>
                                             ))}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                                 {project.techStack.tools && project.techStack.tools.length > 0 && (
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-3 text-zinc-300">開発ツール</h3>
-                                        <div className="space-y-2">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">開発ツール</h3>
+                                        <div className="flex flex-wrap gap-2">
                                             {project.techStack.tools.map((tech, index) => (
-                                                <div key={index} className="flex items-center space-x-2">
-                                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                                                    <span className="text-zinc-400">{tech}</span>
-                                                </div>
+                                                <span
+                                                    key={index}
+                                                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700 rounded-full text-sm text-zinc-300"
+                                                >
+                                                    {tech}
+                                                </span>
                                             ))}
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 )}
                             </div>
-                        </div>
-                    </motion.section>
+                        </CardContent>
+                    </Card>
 
-                    {/* 工夫した点・こだわり */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="space-y-6"
-                    >
-                        <h2 className="text-2xl font-bold text-orange-500">工夫した点・こだわり</h2>
-                        <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700 space-y-6">
-                            {/* UI/UXで意識したこと */}
-                            {project.improvements.uiux && project.improvements.uiux.length > 0 && (
-                                <div>
-                                    <h3 className="text-lg font-semibold mb-3 text-zinc-300">UI/UXの工夫</h3>
-                                    <div className="space-y-2">
-                                        {project.improvements.uiux.map((improvement, index) => (
-                                            <div key={index} className="flex items-start space-x-3">
-                                                <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                                                <p className="text-zinc-400 leading-relaxed">{improvement}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                            {/* 設計の工夫 */}
-                            {project.improvements.design && project.improvements.design.length > 0 && (
-                                <div>
-                                    <h3 className="text-lg font-semibold mb-3 text-zinc-300">設計の工夫</h3>
-                                    <div className="space-y-2">
-                                        {project.improvements.design.map((improvement, index) => (
-                                            <div key={index} className="flex items-start space-x-3">
-                                                <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                                                <p className="text-zinc-400 leading-relaxed">{improvement}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                            {/* ユーザビリティやパフォーマンス面 */}
-                            {project.improvements.performance && project.improvements.performance.length > 0 && (
-                                <div>
-                                    <h3 className="text-lg font-semibold mb-3 text-zinc-300">パフォーマンス・ユーザビリティ</h3>
-                                    <div className="space-y-2">
-                                        {project.improvements.performance.map((improvement, index) => (
-                                            <div key={index} className="flex items-start space-x-3">
-                                                <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                                                <p className="text-zinc-400 leading-relaxed">{improvement}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </motion.section>
+                    {/* 工夫した点・こだわりセクション */}
+                    <Card className="bg-[#202428]/90 border-zinc-700">
+                        <CardContent className="p-6">
+                            <h2 className="text-2xl font-semibold mb-4 text-white">工夫した点・こだわり</h2>
+                            <div className="space-y-6">
+                                {/* UI/UXで意識したこと */}
+                                {project.improvements.uiux && project.improvements.uiux.length > 0 && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">UI/UXの工夫</h3>
+                                        <ul className="space-y-2">
+                                            {project.improvements.uiux.map((improvement, index) => (
+                                                <li key={index} className="text-zinc-400">
+                                                    • {improvement}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                )}
+                                {/* 設計の工夫 */}
+                                {project.improvements.design && project.improvements.design.length > 0 && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">設計の工夫</h3>
+                                        <ul className="space-y-2">
+                                            {project.improvements.design.map((improvement, index) => (
+                                                <li key={index} className="text-zinc-400">
+                                                    • {improvement}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                )}
+                                {/* ユーザビリティやパフォーマンス面 */}
+                                {project.improvements.performance && project.improvements.performance.length > 0 && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <h3 className="text-lg font-semibold text-zinc-200 mb-2">パフォーマンス</h3>
+                                        <ul className="space-y-2">
+                                            {project.improvements.performance.map((improvement, index) => (
+                                                <li key={index} className="text-zinc-400">
+                                                    • {improvement}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                )}
+                            </div>
+                        </CardContent>
+                    </Card>
 
                     {/* 苦労した点と解決方法セクション */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                        className="space-y-6"
-                    >
-                        <h2 className="text-2xl font-bold text-orange-500">苦労した点と解決方法（学び）</h2>
-                        <div className="space-y-6">
-                            {project.challenges.map((challenge, index) => (
-                                <div key={index} className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
-                                    {/* 技術的に詰まった点とどう乗り越えたか */}
-                                    <div className="space-y-4">
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2 text-red-400">苦労した点</h3>
-                                            <p className="text-zinc-400 leading-relaxed">{challenge.problem}</p>
+                    <Card className="bg-[#202428]/90 border-zinc-700">
+                        <CardContent className="p-6">
+                            <h2 className="text-2xl font-semibold mb-4 text-white">苦労した点と解決方法</h2>
+                            <div className="space-y-8">
+                                {project.challenges.map((challenge, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="p-6 bg-zinc-800/30 rounded-lg border border-zinc-700"
+                                    >
+                                        <div className="space-y-4">
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2 text-red-400">苦労した点</h3>
+                                                <p className="text-zinc-400">{challenge.problem}</p>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2 text-green-400">解決方法</h3>
+                                                <p className="text-zinc-400">{challenge.solution}</p>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-lg font-semibold mb-2 text-blue-400">学び</h3>
+                                                <p className="text-zinc-400">{challenge.learning}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2 text-green-400">解決方法</h3>
-                                            <p className="text-zinc-400 leading-relaxed">{challenge.solution}</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2 text-blue-400">学び</h3>
-                                            <p className="text-zinc-400 leading-relaxed">{challenge.learning}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.section>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
 
                     {/* GitHub・デモリンクセクション */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                        className="space-y-6"
-                    >
-                        <h2 className="text-2xl font-bold text-orange-500">GitHub・デモリンク</h2>
-                        <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
-                            <div className="flex flex-wrap gap-4">
-                                {/* GitHubリンク */}
-                                {project.links.github && (
-                                    <Button
-                                        variant="ghost"
-                                        size="lg"
-                                        className="text-zinc-400 hover:text-white border border-zinc-700 hover:border-zinc-600"
-                                        onClick={() => window.open(project.links.github, '_blank', 'noopener,noreferrer')}
-                                    >
-                                        <Github className="w-5 h-5 mr-2" />
-                                        GitHub
-                                    </Button>
-                                )}
-                                {/* デモURL */}
-                                {project.links.demo && (
-                                    <Button
-                                        size="lg"
-                                        className="bg-orange-500 hover:bg-orange-600 text-white"
-                                        onClick={() => window.open(project.links.demo, '_blank', 'noopener,noreferrer')}
-                                    >
-                                        <ExternalLink className="w-5 h-5 mr-2" />
-                                        デモを見る
-                                    </Button>
-                                )}
-                            </div>
-                            {/* リンクがない場合のメッセージ */}
-                            {!project.links.github && !project.links.demo && (
-                                <p className="text-zinc-500 italic">準備中です</p>
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="flex justify-center gap-4">
+                            {project.links.github && (
+                                <Button
+                                    onClick={() => window.open(project.links.github, '_blank')}
+                                    className="bg-zinc-800 hover:bg-zinc-700"
+                                >
+                                    <Github className="mr-2 h-4 w-4" />
+                                    GitHub
+                                </Button>
+                            )}
+                            {project.links.demo && (
+                                <Button
+                                    onClick={() => window.open(project.links.demo, '_blank')}
+                                    className="bg-orange-500 hover:bg-orange-600"
+                                >
+                                    <ExternalLink className="mr-2 h-4 w-4" />
+                                    デモを見る
+                                </Button>
                             )}
                         </div>
-                    </motion.section>
+                        {/* リンクがない場合のメッセージ */}
+                        {!project.links.github && !project.links.demo && (
+                            <p className="text-zinc-400 text-center italic">
+                                準備中です
+                            </p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
