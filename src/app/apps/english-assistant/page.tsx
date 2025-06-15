@@ -1,104 +1,98 @@
-// app/apps/english-assistant/page.tsx
 'use client'
 
 import ProjectDetailSection from '@/components/ui/ProjectDetailSection';
 
-const EnglishAssistantPage = () => {
+const EnglishLearningAssistantPage = () => {
     const projectDetails = {
-        title: "English Learning Assistant",
-        overview: {
-            background: "一般的な機械翻訳サービスは英文を日本語に変換することはできますが、文法構造や特殊な用法についての解説がないため、英語学習者の理解を深めることが難しい状況がありました。また、ウェブで調べ物をする際に遭遇する英文を学習機会として活用できていないという課題がありました。",
-            purpose: "ウェブページ上の英文を選択するだけで、単なる和訳だけでなく、文法構造の詳細な解説、語彙の説明、チャンク（意味のまとまり）での区切りなど、英語学習に必要な情報を表示し、学習者の理解を深めることを目指しています。",
+        // タイトル・概要
+        title: "英文解析ツール",
+        shortDescription: "選択したテキストを右クリック一つで詳細な文法解析・和訳・語彙解説を表示",
+        screenshots: [
+
+            {
+                type: 'image' as const,
+                url: '/images/english-assistant/1.png',
+            },
+
+        ],
+
+        // 開発背景・目的
+        development: {
+            background: "英語の学習において、文章を読む際に文法構造や語彙の意味が分からず理解に時間がかかったり、辞書を調べる手間で学習のリズムが途切れる問題があった。また、単語の意味だけでなく文の構造や文法事項まで一括で確認できるツールが少なく、効率的な英語学習が困難であった。",
+            target: "Webブラウジング中にワンクリックで英文の詳細解析ができ、チャンク分け・和訳・文法構造・語彙解説までを一画面で確認できるツールを開発。"
         },
-        media: [
-            {
-                type: 'youtube' as const,
-                url: 'Jvy3Ki11_Ss'  // YouTubeの動画ID
-            },
-            {
-                type: 'image' as const,
-                url: '/images/english-assistant/preview1.png',
-                alt: '拡張機能の使用例'
-            },
-            {
-                type: 'image' as const,
-                url: '/images/english-assistant/preview2.png',
-                alt: '文法解析の詳細画面'
-            }
-        ],
+
+        // 主な機能
         features: [
-            {
-                title: "テキスト解析機能",
-                items: [
-                    "選択したテキストのチャンク（意味のまとまり）への分割",
-                    "文の構造分析（主語、動詞、目的語、補語、修飾語の特定）",
-                    "自然な日本語訳の生成",
-                    "使用されている文法事項の特定と解説"
-                ]
-            },
-            {
-                title: "学習支援機能",
-                items: [
-                    "文法構造の視覚的な表示",
-                    "重要な語彙・表現の詳細な説明",
-                    "類似の用法や関連表現の提示",
-                    "文法ポイントの解説とサンプル文の提供"
-                ]
-            },
+            "右クリック→コンテキストメニューから選択テキストを解析",
+            "OpenAI GPT-3.5-turboによる英文構造分析",
+            "意味のまとまりに基づいたチャンク分け表示",
+            "自然で読みやすい日本語和訳の生成",
+            "基本文型（SVO、SVC等）に基づく文の構造分析",
+            "主語・動詞・補語・修飾語の詳細な品詞解析",
+            "使用されている文法事項の特定と解説",
+            "重要語彙・表現の詳細説明とコンテキスト解説",
+            "Markdown形式での整理された解析結果表示",
+            "Chrome拡張機能としてWebサイトで利用可能"
         ],
-        techStack: [
-            {
-                category: "フロントエンド",
-                items: [
-                    "JavaScript",
-                    "HTML/CSS",
-                    "marked.js",
-                    "Chrome Extensions API"
-                ]
-            },
-            {
-                category: "バックエンド連携",
-                items: [
-                    "OpenAI API",
-                    "GPT-3.5 Turbo"
-                ]
-            },
-            {
-                category: "開発ツール",
-                items: [
-                    "Chrome Developer Tools",
-                    "Visual Studio Code",
-                    "Git"
-                ]
-            }
-        ],
-        architecture: {
-            structure: `extension/
-├── manifest.json     # 拡張機能の設定ファイル
-├── background.js     # バックグラウンドスクリプト
-├── content.js        # コンテンツスクリプト
-├── popup/
-│   ├── popup.html    # 設定画面のHTML
-│   └── popup.js      # 設定画面のロジック
-└── lib/
-    └── marked.min.js # マークダウン変換ライブラリ`,
-            dataFlow: [
-                "ユーザーがウェブページ上で英文を選択",
-                "コンテキストメニューから解析を実行",
-                "選択されたテキストをOpenAI APIに送信",
-                "受け取った解析結果をマークダウンに変換",
-                "ポップアップウィンドウに結果を表示"
+
+        // 使用技術・開発環境
+        techStack: {
+            frontend: [
+                "JavaScript (ES6+)",
+                "HTML5",
+                "CSS3",
+                "marked.js",              // Markdown → HTML変換
+                "Chrome Extension API"    // ブラウザ拡張機能
+            ],
+            backend: [
+                "OpenAI API",
+                "GPT-3.5-turbo",         // 自然言語処理
+                "REST API"               // HTTP通信
+            ],
+            browserAPIs: [
+                "chrome.contextMenus",   // 右クリックメニュー
+                "chrome.storage.sync",   // 設定データ保存
+                "chrome.scripting",      // スクリプト注入
+                "chrome.tabs",           // タブ操作
+                "chrome.runtime"         // メッセージング
+            ],
+            tools: [
+                "VS Code",
+                "Chrome Developer Tools",
+                "Chrome Extensions Developer Mode",
+                "Git",
+                "OpenAI API Console"
             ]
         },
-        futureScope: [
-            "プロンプトをカスタマイズ可能に",
+
+        // 工夫した点・こだわり
+        improvements: {
+            uiux: [
+            ],
+            design: [
+            ],
+            performance: [
+            ]
+        },
+
+        // 苦労した点と解決方法
+        challenges: [
+            {
+                problem: "編集中",
+                solution: "編集中",
+                learning: "編集中"
+            },
+
         ],
+
+        // GitHub・デモリンク
         links: {
-            github: "https://github.com/temmie0232/EnglishReadingSupportTools",
+            github: "https://github.com/[username]/EnglishReadingSupportTools",
         }
     };
 
     return <ProjectDetailSection project={projectDetails} />;
 };
 
-export default EnglishAssistantPage;
+export default EnglishLearningAssistantPage;
