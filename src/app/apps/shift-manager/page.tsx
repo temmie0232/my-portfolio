@@ -10,32 +10,37 @@ const ShiftManagementSystemPage = () => {
         screenshots: [
             {
                 type: 'image' as const,
-                url: '/images/shift-management/1.png',
+                url: '/images/shiftmanager/1.png',
                 alt: 'システム全体概要画面'
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-management/2.png',
+                url: '/images/shiftmanager/2.png',
                 alt: 'スマートフォン - シフト入力画面'
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-management/3.png',
+                url: '/images/shiftmanager/3.png',
                 alt: 'PC管理画面 - シフト一覧表示'
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-management/4.png',
+                url: '/images/shiftmanager/4.png',
                 alt: 'LINE自動通知機能'
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-management/5.png',
+                url: '/images/shiftmanager/5.png',
                 alt: 'PDF→PNG自動変換機能'
             },
             {
                 type: 'image' as const,
-                url: '/images/shift-management/6.png',
+                url: '/images/shiftmanager/6.png',
+                alt: 'シフト表自動配信システム'
+            },
+            {
+                type: 'image' as const,
+                url: '/images/shiftmanager/6.png',
                 alt: 'シフト表自動配信システム'
             }
         ],
