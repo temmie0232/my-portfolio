@@ -52,7 +52,7 @@ export default function ProjectsPage() {
             description: "ホストのSpotifyアカウントを複数人の端末から操作",
             purpose: "車内など、複数人で音楽を共有する際の課題を解決するWebアプリ。従来のBluetooth接続では1台のデバイスしか接続できず、曲の選択や操作が制限されるという問題を解決。",
             tools: ["Next.js", "MongoDB", "Spotify WEB API"],
-            projectUrl: "/apps/spotify-share",
+            projectUrl: "/apps/soon",
             isFeatured: false,
             previewVideo: "GSP6QGZpyq4"
         },
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
             description: "カメラを使用してリアルタイムで画角内の物体を検知するwebアプリ。モバイル向けのため精度は低め。",
             purpose: "TensorFlow.jsを使って、ブラウザ上で機械学習モデルを動かす実験、モバイルデバイスのカメラAPIと機械学習の統合についての技術検証",
             tools: ["Next.js", "TensorFlow.js", "COCO-SSDモデル"],
-            projectUrl: "/apps/object-detection",
+            projectUrl: "/apps/soon",
             isFeatured: false,
             previewImage: "/images/object-detection/image1.jpg"
         },
@@ -71,7 +71,7 @@ export default function ProjectsPage() {
             description: "私についてのポートフォリオサイト",
             purpose: "自分についてのサイトを作成してみたかった。フロントエンドの理解を深める。",
             tools: ["Next.js",],
-            projectUrl: "/apps/portfolio",
+            projectUrl: "/apps/soon",
             isFeatured: false
         },
         {
