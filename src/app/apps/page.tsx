@@ -13,8 +13,8 @@ export default function ProjectsPage() {
     const projects = [
         {
             title: "Amazon レビュー分析システム",
-            description: "AIを活用したビジネス改善提案の自動生成システム。568,454件の実Amazonレビューデータから83.7%精度で感情分析を行い、具体的な改善提案とROI算出を提供。",
-            purpose: "企業がレビューデータから客観的な改善点を特定し、投資対効果を考慮した戦略的意思決定を支援するため。データサイエンス・機械学習・ビジネス分析のスキル習得。",
+            description: "AIを活用してAmazonレビューから感情分析を行い、具体的な改善提案とROIを算出するツール",
+            purpose: "Amazon商品レビューからBERTベースの感情分析モデルを使用し感情分析を行い、商品改善提案とROI予測を自動生成するWebアプリを開発。CSVアップロード機能を実装し、非エンジニアでも使えるビジネス向けツールを目指した。",
             tools: ["Python", "BERT", "Streamlit", "Plotly", "HuggingFace", "Kaggle API", "scikit-learn", "pandas"],
             projectUrl: "/apps/amazon-review-analyzer",
             isFeatured: true,
@@ -22,8 +22,8 @@ export default function ProjectsPage() {
         },
         {
             title: "バイト先のシフト管理アプリ",
-            description: "従来のアナログなシフト管理（A4手書き→写真→LINE送信）を完全デジタル化。LINE API連携により自動的なシフト提出URLの送信と、PDF→PNG変換による自動配信を実現。",
-            purpose: "手書きの見づらさ、店舗への移動の必要性、写真撮影時のトラブルといった従来のシフト管理の問題を解決し、効率化を図るため。",
+            description: "従来のアナログなシフト管理を完全デジタル化。LINE API連携により自動的なシフト提出URLの送信と、PDF→PNG変換によるシフトの送信機能を実現。",
+            purpose: "手書きの見づらさ、店舗へシフトを書きにいかないといけないといった従来のシフト管理の問題を解決し、効率化を図るため。",
             tools: ["Next.js", "Django", "LINE Messaging API", "Vercel", "MySQL"],
             projectUrl: "/apps/shift-manager",
             isFeatured: true,
@@ -31,8 +31,8 @@ export default function ProjectsPage() {
         },
         {
             title: "バイト先のトレーニングアプリ",
-            description: "新人従業員向けの調理方法学習支援アプリ。間隔反復学習のアルゴリズムを採用し、最適な学習プランを生成。",
-            purpose: "新人トレーニングの効率化と、学習進捗の可視化による動機付けの向上。",
+            description: "新人従業員向けのトレーニング支援アプリ。間隔反復学習のアルゴリズムを採用し、最適な学習プランを生成。",
+            purpose: "新人トレーニングの効率化と、学習進捗の可視、いつでもどこでもスマホから見返せる",
             tools: ["Vue.js", "Ruby on Rails", "PostgleSQL",],
             projectUrl: "/apps/cafe-training",
             isFeatured: true,
