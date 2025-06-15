@@ -60,32 +60,48 @@ const AmazonReviewAnalyzerPage = () => {
         // 使用技術・開発環境
         techStack: {
             frontend: [
-                "編集中",
+                "Streamlit",           // Webダッシュボード
+                "Plotly",              // インタラクティブ可視化
+                "HTML/CSS",
             ],
             backend: [
-                "編集中",
+                "Python",
+                "HuggingFace Transformers", // BERT感情分析
+                "PyTorch",
+                "scikit-learn",
+                "pandas",
+                "NumPy",
             ],
             database: [
-                "編集中",
+                "CSV Files",
+                "Kaggle API",          // 外部のデータ
             ],
             infrastructure: [
-                "編集中",
+                "Streamlit Cloud",
+                "GitHub",
+                "Kaggle Platform",     // データ取得
             ],
             tools: [
-                "編集中",
+                "Jupyter Notebook",
+                "Git",
+                "VS Code",
+                "Matplotlib/Seaborn",  // 統計可視化
+                "tqdm",                // プログレスバー
             ]
         },
 
         // 工夫した点・こだわり
         improvements: {
             uiux: [
-                "編集中",
+                "webによるUI設計で誰でも操作可能",
+                "分析のフローを段階的に",
+                "結果のダウンロードが可能(CSV)",
             ],
             design: [
                 "編集中",
             ],
             performance: [
-                "編集中",
+                "チャンク処理を行うことでメモリの最適化",
             ]
         },
 
