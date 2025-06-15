@@ -73,6 +73,11 @@ const AppSection = () => {
             title: "英文解析ツール",
             videos: ["Jvy3Ki11_Ss"],
             description: [" - web上の選択した英文テキストの文法をAIがリアルタイムで解説", "( JavaScript + HTML + CSS + OpenAI API + Chrome Extensions API )"]
+        },
+        {
+            title: "音楽共有プレイヤー",
+            videos: ["GSP6QGZpyq4"],
+            description: ["車内など、複数人で音楽を共有する際の課題を解決するWebアプリ", "(編集中)"]
         }
     ];
 
