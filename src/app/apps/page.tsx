@@ -43,7 +43,7 @@ export default function ProjectsPage() {
             description: "web上の英文を選択するとOpenAIのAPIを使用し、文法を詳細に解説してくれる Google Chrome の拡張機能",
             purpose: "web上で英語をただ翻訳するツールは便利だが、ただ日本語に翻訳されるだけでは文法の理解がなかなか深まらない。そこで解説してくれるツールを作成した。",
             tools: ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "OpenAI API"],
-            projectUrl: "/apps/english-assistant",
+            projectUrl: "/apps/soon",
             isFeatured: false,
             previewVideo: "Jvy3Ki11_Ss"
         },
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
             description: "ほぼチュートリアル",
             purpose: "開発手法を学ぶ",
             tools: ["Youtube", "GitHub"],
-            projectUrl: "/apps/other"
+            projectUrl: "/apps/soon"
         }
     ];
 
