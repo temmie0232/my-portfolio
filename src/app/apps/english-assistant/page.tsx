@@ -88,7 +88,7 @@ const EnglishLearningAssistantPage = () => {
 
         // GitHub・デモリンク
         links: {
-            github: "https://github.com/[username]/EnglishReadingSupportTools",
+            github: "https://github.com/temmie0232/EnglishReadingSupportTools",
         }
     };
 
