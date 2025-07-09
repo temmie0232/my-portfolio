@@ -26,18 +26,7 @@ const AppSection = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const featuredProjects: Project[] = [
-        {
-            title: "Amazon レビュー分析システム",
-            images: [
-                "/images/amazon-review-analyzer/1.png",
-                "/images/amazon-review-analyzer/2.png",
-                "/images/amazon-review-analyzer/3.png",
-                "/images/amazon-review-analyzer/4.png",
-                "/images/amazon-review-analyzer/5.png",
-                "/images/amazon-review-analyzer/6.png"
-            ],
-            description: [" - AIを活用したビジネス改善提案の自動生成システム", "Point: 568,454件の実データから83.7%精度で感情分析・改善案提案", "( Python + BERT + Streamlit + Kaggle API + HuggingFace )"]
-        },
+
         {
             title: "バイト先のシフト管理アプリ",
             images: [
